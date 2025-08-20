@@ -25,7 +25,7 @@ nav ul {
    =================================== */
 
 .producto {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .btn-detalle {
@@ -39,7 +39,6 @@ nav ul {
     font-weight: bold;
     text-align: center;
 }
-
 
 
 /*El texto principal debe ser de color blanco y el secundario gris */

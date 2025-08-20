@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta name="description" content="Productos - Tienda Pokémon">
@@ -7,15 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Productos - Tienda Pokémon</title>
     <link rel="icon" href="../../img/poke-logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../../public/styles.css">
     <script src="https://kit.fontawesome.com/6f1518c02e.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
+
     <header>
         <h1>Productos Región Hoenn</h1>
-        <nav>
-            <ul>
+        <nav aria-label="Navegación principal">
+            <ul class="menu-principal">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="productos.html">Productos</a></li>
                 <li><a href="blog.html">Blog</a></li>
@@ -25,18 +30,20 @@
                 <li><a href="nosotros.html">Nosotros</a></li>
             </ul>
         </nav>
-        <ul>
-            <li><a href="productos-kanto.html">Kanto</a></li>
-            <li><a href="productos-johto.html">Johto</a></li>
-            <li><a href="productos-hoenn.html">Hoenn</a></li>
-            <li><a href="productos-sinnoh.html">Sinnoh</a></li>
-            <li><a href="productos-unova.html">Unova</a></li>
-            <li><a href="productos-kalos.html">Kalos</a></li>
-            <li><a href="productos-alola.html">Alola</a></li>
-            <li><a href="productos-galar.html">Galar</a></li>
-            <li><a href="productos-paldea.html">Paldea</a></li>
-        </ul>
+        <nav  class="menu-regiones" aria-label="Navegación por región">
+            <ul>
+                <li><a href="productos-kanto.html">Kanto</a></li>
+                <li><a href="productos-johto.html">Johto</a></li>
+                <li><a href="productos-hoenn.html">Hoenn</a></li>
+                <li><a href="productos-sinnoh.html">Sinnoh</a></li>
+                <li><a href="productos-unova.html">Unova</a></li>
+                <li><a href="productos-kalos.html">Kalos</a></li>
+                <li><a href="productos-alola.html">Alola</a></li>
+                <li><a href="productos-galar.html">Galar</a></li>
+                <li><a href="productos-paldea.html">Paldea</a></li>
+            </ul>
     </header>
+
     <main>
         <h2>Categorías</h2>
         <ul>
@@ -45,36 +52,89 @@
             <li><a href="#tcg">TCG</a></li>
             <li><a href="#accesorios">Accesorios</a></li>
         </ul>
-        <section id="consola">
-            <h3><a href="consolas.html">Consola</a></h3>
+        <section id="consola" aria-labelledby="consola-titulo">
+            <h3 id="consola-titulo"><a href="consolas.html">Consola</a></h3>
             <ul>
-                <li>Nintendo Game Boy Advance Edición Hoenn</li>
+                <li>
+                    <article class="producto">
+                        <strong>Nintendo Game Boy Advance Edición Hoenn</strong>
+                        <p>Consola portatil clásica con con los colores temáticos de Hoenn.</p>
+                        <a href="consolas.html" class="btn-detalle">Ver detalle</a>
+                    </article>
+                </li>
             </ul>
         </section>
-        <section id="videojuego">
-            <h3><a href="videojuego.html">Videojuego</a></h3>
+        <section id="videojuego" aria-labelledby="videojuego-titulo">
+            <h3 id="videojuego-titulo"><a href="videojuego.html">Videojuego</a></h3>
             <ul>
-                <li>Pokémon Rubí</li>
-                <li>Pokémon Zafiro</li>
-                <li>Pokémon Esmeralda</li>
+                <li>
+                    <article class="producto">
+                        <strong>Pokémon Rubí</strong>
+                        <p>Juego clásico edición rubi</p>
+                        <a href="videojuego.html" class="btn-detalle">Ver detalle</a>
+                    </article>
+                </li>
+                <li>
+                    <article class="producto">
+                        <strong>Pokémon Zafiro</strong>
+                        <p>Juego clásico edición zafiro</p>
+                        <a href="videojuego.html" class="btn-detalle">Ver detalle</a>
+                    </article>
+                </li>
+                <li>
+                    <article class="producto">
+                        <strong>Pokémon Esmeralda</strong>
+                        <p>Juego clásico edición esmeralda</p>
+                        <a href="videojuego.html" class="btn-detalle">Ver detalle</a>
+                    </article>
+                </li>
             </ul>
         </section>
-        <section id="tcg">
-            <h3><a href="tcg.html">TCG</a></h3>
+        <section id="tcg" aria-labelledby="tcg-titulo">
+            <h3 id="tcg-titulo"><a href="tcg.html">TCG</a></h3>
             <ul>
-                <li>Set de Cartas Hoenn</li>
+                <li>
+                    <article class="producto">
+                        <strong>Set de cartas Hoenn</strong>
+                        <p>Mazo clásico edición Hoenn</p>
+                        <a href="tcg.html" class="btn-detalle">Ver detalle</a>
+                    </article>
+                </li>
             </ul>
         </section>
-        <section id="accesorios">
-            <h3><a href="accesorios.html">Accesorios</a></h3>
+        <section id="accesorios" aria-labelledby="accesorios-titulo">
+            <h3 id="accesorios-titulo"><a href="accesorios.html">Accesorios</a></h3>
             <ul>
-                <li>Peluche Mudkip</li>
-                <li>Mousepad Hoenn</li>
-                <li>Audífonos Pokémon</li>
+                <li>
+                    <article class="producto">
+                        <strong>Peluche Mudkip</strong>
+                        <p>Tierno peluche del icónico inicial de la tercera generación</p>
+                        <a href="accesorios.html" class="btn-detalle">Ver detalle</a>
+                    </article>
+                </li>
+                <li>
+                    <article class="producto">
+                        <strong>Mousepad Hoenn</strong>
+                        <p>Cómodo mousepad con diseño de Hoenn</p>
+                        <a href="accesorios.html" class="btn-detalle">Ver detalle</a>
+                    </article>
+                </li>
+                <li>
+                    <article class="producto">
+                        <strong>Audifonos Pokemon</strong>
+                        <p>Audífonos diseño Pokemon</p>
+                        <a href="accesorios.html" class="btn-detalle">Ver detalle</a>
+                    </article>
+                </li>
             </ul>
         </section>
+        <a href="productos.html">Atrás</a>
     </main>
-    <a href="productos.html">Atrás</a>
+
     <footer>
         <p>&copy; 2025 Tienda Pokémon. Todos los derechos reservados.</p>
     </footer>
+
+</body>
+
+</html>

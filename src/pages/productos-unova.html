@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta name="description" content="Productos - Tienda Pokémon">
@@ -7,13 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Productos - Tienda Pokémon</title>
     <link rel="icon" href="../../img/poke-logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../../public/styles.css">
     <script src="https://kit.fontawesome.com/6f1518c02e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
     <header>
         <h1>Productos Región Unova</h1>
-        <nav>
-            <ul>
+        <nav aria-label="Navegación principal">
+            <ul class="menu-principal">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="productos.html">Productos</a></li>
                 <li><a href="blog.html">Blog</a></li>
@@ -23,6 +30,7 @@
                 <li><a href="nosotros.html">Nosotros</a></li>
             </ul>
         </nav>
+        <nav class="menu-regiones" aria-label="Navegación por región">
             <ul>
                 <li><a href="productos-kanto.html">Kanto</a></li>
                 <li><a href="productos-johto.html">Johto</a></li>
@@ -36,6 +44,7 @@
             </ul>
         </nav>
     </header>
+
     <main>
         <h2>Categorías</h2>
         <ul>
@@ -44,35 +53,103 @@
             <li><a href="#tcg">TCG</a></li>
             <li><a href="#accesorios">Accesorios</a></li>
         </ul>
-        <section id="consola">
-            <h3><a href="consolas.html">Consola</a></h3>
+        <section id="consola" aria-labelledby="consola-titulo">
+            <h3 id="consola-titulo"><a href="consolas.html">Consola</a></h3>
             <ul>
-                <li>Nintendo DS Edición Unova</li>
+                <li>
+                    <article class="producto">
+                        <strong>Nintendo DS Edición Unova</strong>
+                        <p>Consola portatil clásica con con los colores temáticos de Unova.</p>
+                        <a href="consolas.html" class="btn-detalle">Ver detalle</a>
+                    </article>
+                </li>
             </ul>
         </section>
-        <section id="videojuego">
-            <h3><a href="videojuego.html">Videojuego</a></h3>
+        <section id="videojuego" aria-labelledby="videojuego-titulo">
+            <h3 id="videojuego-titulo"><a href="videojuego.html">Videojuego</a></h3>
             <ul>
-                <li>Pokémon Negro</li>
-                <li>Pokémon Blanco</li>
+                <li>
+                    <article class="producto">
+                        <strong>Pokémon Rojo</strong>
+                        <p>Juego clásico edición roja</p>
+                        <a href="videojuego.html" class="btn-detalle">Ver detalle</a>
+                    </article>
+                </li>
+                <li>
+                    <article class="producto">
+                        <strong>Pokémon Blanco</strong>
+                        <p>Juego clásico edición blanco</p>
+                        <a href="videojuego.html" class="btn-detalle">Ver detalle</a>
+                    </article>
+                </li>
+                <li>
+                    <article class="producto">
+                        <strong>Pokémon Blanco 2</strong>
+                        <p>Juego clásico edición blanco 2</p>
+                        <a href="videojuego.html" class="btn-detalle">Ver detalle</a>
+                    </article>
+                </li>
+                <li>
+                    <article class="producto">
+                        <strong>Pokémon Negro</strong>
+                        <p>Juego clásico edición negro</p>
+                        <a href="videojuego.html" class="btn-detalle">Ver detalle</a>
+                    </article>
+                </li>
+                <li>
+                    <article class="producto">
+                        <strong>Pokémon Negro 2</strong>
+                        <p>Juego clásico edición negro 2</p>
+                        <a href="videojuego.html" class="btn-detalle">Ver detalle</a>
+                    </article>
+                </li>
             </ul>
         </section>
-        <section id="tcg">
-            <h3><a href="tcg.html">TCG</a></h3>
+        <section id="tcg" aria-labelledby="tcg-titulo">
+            <h3 id="tcg-titulo"><a href="tcg.html">TCG</a></h3>
             <ul>
-                <li>Set de Cartas Unova</li>
+                <li>
+                    <article class="producto">
+                        <strong>Set de cartas Unova</strong>
+                        <p>Mazo clásico edición Unova</p>
+                        <a href="tcg.html" class="btn-detalle">Ver detalle</a>
+                    </article>
+                </li>
             </ul>
         </section>
-        <section id="accesorios">
-            <h3><a href="accesorios.html">Accesorios</a></h3>
+        <section id="accesorios" aria-labelledby="accesorios-titulo">
+            <h3 id="accesorios-titulo"><a href="accesorios.html">Accesorios</a></h3>
             <ul>
-                <li>Peluche Snivy</li>
-                <li>Mousepad Unova</li>
-                <li>Audífonos Pokémon</li>
+                <li>
+                    <article class="producto">
+                        <strong>Peluche Snivy</strong>
+                        <p>Tierno peluche del icónico inicial de la quinta generación</p>
+                        <a href="accesorios.html" class="btn-detalle">Ver detalle</a>
+                    </article>
+                </li>
+                <li>
+                    <article class="producto">
+                        <strong>Mousepad Unova</strong>
+                        <p>Cómodo mousepad con diseño de Kanto</p>
+                        <a href="accesorios.html" class="btn-detalle">Ver detalle</a>
+                    </article>
+                </li>
+                <li>
+                    <article class="producto">
+                        <strong>Audifonos Pokemon</strong>
+                        <p>Audífonos diseño Pokemon</p>
+                        <a href="accesorios.html" class="btn-detalle">Ver detalle</a>
+                    </article>
+                </li>
             </ul>
         </section>
-    </main>
     <a href="productos.html">Atrás</a>
+    </main>
+  
     <footer>
         <p>&copy; 2025 Tienda Pokémon. Todos los derechos reservados.</p>
     </footer>
+
+</body>
+
+</html>
