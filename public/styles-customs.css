@@ -1,0 +1,116 @@
+/* ===================================
+   RESET + VARIABLES
+   =================================== */
+
+:root {
+    --bg: #fca4a4;
+    --bg2: #e96c6c;
+    --surface: ;
+    --surface2: ;
+    --titles: "Orbitron", sans-serif;
+    --text: "Roboto", sans-serif;
+    --textColor: #eddcdc;
+    --textColor2: ;
+    --textHooverColor: #ff0000;
+    --colorAnchor: #000000;
+    --radius: 1rem;
+    --shadow: 0.625rem 1.875rem rgba(0, 0, 0, .35)
+}
+
+/* ===================================
+   GLOBAL ELEMENTS
+   =================================== */
+
+
+* {
+    font-family: var(--text) ;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: radial-gradient(1200px 800px at 20% -10%, rgba(255, 0, 0, 0.3), transparent),
+                radial-gradient(1200px 800px at 120% 10%, rgba(0, 0, 0, 0.2), transparent),
+                var(--bg);
+    color: var(--textColor);
+    line-height: 1.6;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: 'Roboto', sans-serif;
+}
+
+img {
+    max-width: 100%;
+    display:block;
+}
+
+input, select, textarea, button {
+    font: inherit; 
+    color: inherit;}
+
+
+
+header nav ul li a:hover {
+    color: var(--textHooverColor);
+}
+
+nav ul {
+    display: flex;
+    gap: 1.5625rem;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: var(--titles);
+}
+
+a {
+    color: var(--colorAnchor);
+    text-decoration: none;
+}
+
+/* ===================================
+   LAYOUT
+   =================================== */
+
+
+/* ===================================
+   COMPONENTS
+   =================================== */
+.banner {    
+    background-color: var(--bg2);
+    position: sticky;
+    top: 0;
+    padding: 1.25rem 2.5rem;
+}
+.producto {
+    margin-bottom: 20px;
+}
+
+.btn-detalle {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background: linear-gradient(to bottom, red 50%, white 50%);
+    color: black;
+    text-decoration: none;
+    border: 0.125rem solid #000;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/*El texto principal debe ser de color blanco y el secundario gris */
