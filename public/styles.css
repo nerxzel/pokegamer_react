@@ -1,14 +1,61 @@
+/* ===================================
+   RESET + VARIABLES
+   =================================== */
+
+* { 
+    box-sizing: border-box;
+}
+
+html, body { 
+    height: 100%;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* ===================================
+   GLOBAL ELEMENTS
+   =================================== */
+
 body {
     font-family: 'Roboto', sans-serif;
 }
 
-h1, h2, h3, h4, h5{
+h1, h2, h3, h4, h5 {
     font-family: 'Orbitron', sans-serif;
 }
 
-nav ul{
-    display: flex;       
+nav ul {
+    display: flex;
     gap: 25px;
 }
+
+/* ===================================
+   LAYOUT
+   =================================== */
+
+
+/* ===================================
+   COMPONENTS
+   =================================== */
+
+.producto {
+    margin-bottom: 20px;
+}
+
+.btn-detalle {
+    display: inline-block;
+    padding: 4px 8px;
+    background: linear-gradient(to bottom, red 50%, white 50%);
+    color: black;
+    text-decoration: none;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
 
 /*El texto principal debe ser de color blanco y el secundario gris */
