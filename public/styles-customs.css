@@ -13,6 +13,7 @@
     --textColor2: ;
     --textHooverColor: #ff0000;
     --colorAnchor: #000000;
+    --borderColor: #ffff00;
     --radius: 1rem;
     --shadow: 0.625rem 1.875rem rgba(0, 0, 0, .35)
 }
@@ -23,7 +24,7 @@
 
 
 * {
-    font-family: var(--text) ;
+    font-family: var(--text);
     box-sizing: border-box;
 }
 
@@ -39,8 +40,8 @@ html {
 body {
     margin: 0;
     background: radial-gradient(1200px 800px at 20% -10%, rgba(255, 0, 0, 0.3), transparent),
-                radial-gradient(1200px 800px at 120% 10%, rgba(0, 0, 0, 0.2), transparent),
-                var(--bg);
+        radial-gradient(1200px 800px at 120% 10%, rgba(0, 0, 0, 0.2), transparent),
+        var(--bg);
     color: var(--textColor);
     line-height: 1.6;
     background-attachment: fixed;
@@ -50,13 +51,30 @@ body {
 
 img {
     max-width: 100%;
-    display:block;
+    display: block;
 }
 
-input, select, textarea, button {
-    font: inherit; 
-    color: inherit;}
+input,
+select,
+textarea,
+button {
+    font: inherit;
+    color: inherit;
+}
 
+
+header.banner {    
+    background: linear-gradient(0deg, rgba(255, 38, 38, 1), rgb(255, 109, 109,1));
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: grid;
+    gap: .5rem;
+    align-items: center;
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    border-bottom: 0.1px solid, var(--borderColor);
+}
 
 
 header nav ul li a:hover {
@@ -90,12 +108,7 @@ a {
 /* ===================================
    COMPONENTS
    =================================== */
-.banner {    
-    background-color: var(--bg2);
-    position: sticky;
-    top: 0;
-    padding: 1.25rem 2.5rem;
-}
+
 .producto {
     margin-bottom: 20px;
 }
