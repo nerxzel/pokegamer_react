@@ -6,26 +6,27 @@
     <meta name="description" content="Somos una tienda dedicada a Pokémon  ">
     <meta name="keywords" content="gaming, Pokémon, level up">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Usuario - Tienda Pokémon</title>
+    <title>Carrito - Tienda Pokémon</title>
     <link rel="icon" href="../../img/poke-logo.png">
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet">
     <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">-->
-    <link rel="stylesheet" href="../../public/styles-customs.css">
+    <link rel="stylesheet" href="../public/styles-customs.css">
     <script src="https://kit.fontawesome.com/6f1518c02e.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <header class="banner"> 
+    
+    <header class="banner">
         <div class="brand">
-            <h1 aria-label="Usuario">Usuario</h1>
+            <h1 aria-label="Carrito de Compras">Carrito de Compras</h1>
             <p>¡Atrapálos a todos!</p>
         </div>
         <nav>
             <ul>
-                <li><a href="/index.html">Inicio</a></li>
+                <li><a href="../index.html">Inicio</a></li>
                 <li><a href="productos.html">Productos</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="comunidad.html">Centro Pokémon</a></li>
@@ -36,17 +37,13 @@
         </nav>
     </header>
     <main>
-        <form id="login-form">
-            <label for="username">Usuario:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">Iniciar Sesión</button>
-        </form>
-        <p style="margin-top:1em;"><a href="perfil.html">Ir al perfil de entrenador</a></p>
-        <div id="user-info" style="display:none;">
-            <!-- Aquí se mostrará la información del usuario logueado -->
+        <ul class="carrito-lista">
+            <!-- Productos agregados al carrito -->
+        </ul>
+        <div class="carrito-total">
+            <span>Total:</span> <span id="carrito-total-precio">$0.00</span>
         </div>
+        <button id="comprar-btn">Comprar</button>
     </main>
     <footer>
         <p>&copy; 2025 Tienda Pokémon. Todos los derechos reservados.</p>
