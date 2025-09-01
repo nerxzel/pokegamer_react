@@ -13,7 +13,7 @@
     --textColor2: ;
     --textHooverColor: #ff0000;
     --colorAnchor: #000000;
-    --borderColor: #ffff00;
+    --borderColor: #ffffff;
     --radius: 1rem;
     --shadow: 0.625rem 1.875rem rgba(0, 0, 0, .35)
 }
@@ -28,8 +28,7 @@
     box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
     height: 100%;
 }
 
@@ -76,14 +75,32 @@ header.banner {
     border-bottom: 0.1px solid, var(--borderColor);
 }
 
+header .brand h1{
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+header .brand .slogan {
+    margin: .125rem 0 0;
+    color: var(--textColor);
+    font-size: .9rem;
+}
+
+header nav ul li a {
+    padding: .5rem .75rem;
+    border: 1px solid var(--borderColor)
+}
 
 header nav ul li a:hover {
     color: var(--textHooverColor);
 }
 
-nav ul {
+header nav ul {
     display: flex;
-    gap: 1.5625rem;
+    flex-wrap: wrap;
+    gap: .5rem;
+    padding: 0;
+    list-style: none;
 }
 
 
