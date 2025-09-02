@@ -88,10 +88,13 @@ header .brand .slogan {
 
 header nav ul li a {
     padding: .5rem .75rem;
-    border: 1px solid var(--borderColor)
+    border: 1px solid var(--borderColor);
+    border-radius: var(--radius);
+    transition: background .2s, color .2s border-color .2s;
 }
 
 header nav ul li a:hover {
+    background-color: #ffffff;
     color: var(--textHooverColor);
 }
 
@@ -101,6 +104,23 @@ header nav ul {
     gap: .5rem;
     padding: 0;
     list-style: none;
+}
+
+main{
+    width: min(1100px, 100%); 
+    padding: .25rem
+}
+
+.seccion{
+    margin: clamp(1rem, 2.5vw, 2rem) 0;
+    padding: clamp(1rem, 2vw, 2rem);
+    background: linear-gradient(0deg, rgba(255, 38, 38, 1), rgb(255, 109, 109,1));
+    border-radius: var(--radius); box-shadow: var(--shadow);
+}
+
+h2 .seccion {
+    margin-top: 0;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
 }
 
 
@@ -130,7 +150,7 @@ a {
     margin-bottom: 20px;
 }
 
-.btn-detalle {
+.boton-detalle {
     display: inline-block;
     padding: 0.25rem 0.5rem;
     background: linear-gradient(to bottom, red 50%, white 50%);
