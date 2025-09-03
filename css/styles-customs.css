@@ -3,19 +3,27 @@
    =================================== */
 
 :root {
-    --bg: #fca4a4;
-    --bg2: #e96c6c;
-    --surface: ;
-    --surface2: ;
-    --titles: "Orbitron", sans-serif;
-    --text: "Roboto", sans-serif;
-    --textColor: #eddcdc;
-    --textColor2: ;
-    --textHooverColor: #ff0000;
-    --colorAnchor: #000000;
-    --borderColor: #ffffff;
-    --radius: 1rem;
-    --shadow: 0.625rem 1.875rem rgba(0, 0, 0, .35)
+  --bg: #daf8ff;
+  --bg2: #a82028;
+  --bg-section: #68c8fc;
+  --bg-section2: #a7e2f9;
+  --bg-producto: #00a6ff;
+  --bg-producto2:#94e1ff;;
+  --bg-header:  #ff2626;
+  --gradiente-1: radial-gradient(1200px 800px at 20% -10%, rgba(255, 255, 255, 0.977), transparent);
+  --gradiente-2: radial-gradient(1200px 800px at 120% 10%, rgb(198, 226, 250), transparent);
+  --bg-gradiente: var(--gradiente-1), var(--gradiente-2);
+  --surface: linear-gradient(0deg, rgba(255, 38, 38, 1), rgb(255, 109, 109, 1));
+  --titles: "Orbitron", sans-serif;
+  --text: "Roboto", sans-serif;
+  --textColor: #000000;
+  --textSecondary: #000000; /* gris secundario */
+  --colorAnchor: #000;
+  --colorAnchorHover: #ff0000;
+  --borderColor: #fff;
+  --radius: 1rem;
+  --shadow: 0.625rem 1rem rgba(32, 32, 32, 0.529);
+  --paddingBlock: clamp(1rem, 2vw, 2rem);
 }
 
 /* ===================================
@@ -38,9 +46,7 @@ html {
 
 body {
     margin: 0;
-    background: radial-gradient(1200px 800px at 20% -10%, rgba(255, 0, 0, 0.3), transparent),
-        radial-gradient(1200px 800px at 120% 10%, rgba(0, 0, 0, 0.2), transparent),
-        var(--bg);
+    background: var(--bg-gradiente) var(--bg);
     color: var(--textColor);
     line-height: 1.6;
     background-attachment: fixed;
@@ -61,49 +67,6 @@ button {
     color: inherit;
 }
 
-
-header.banner {    
-    background: linear-gradient(0deg, rgba(255, 38, 38, 1), rgb(255, 109, 109,1));
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    display: grid;
-    gap: .5rem;
-    align-items: center;
-    grid-template-columns: 1fr;
-    padding: 1rem;
-    border-bottom: 0.1px solid, var(--borderColor);
-}
-
-header .brand h1{
-    margin: 0;
-    font-size: 1.5rem;
-}
-
-header .brand .slogan {
-    margin: .125rem 0 0;
-    color: var(--textColor);
-    font-size: .9rem;
-}
-
-header nav ul li a {
-    padding: .5rem .75rem;
-    border: 1px solid var(--borderColor)
-}
-
-header nav ul li a:hover {
-    color: var(--textHooverColor);
-}
-
-header nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .5rem;
-    padding: 0;
-    list-style: none;
-}
-
-
 h1,
 h2,
 h3,
@@ -118,19 +81,130 @@ a {
 }
 
 /* ===================================
-   LAYOUT
+   HEADER
    =================================== */
 
+header.banner {    
+    background:var(--bg-header);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    grid-template-columns: auto 1fr;
+    gap: .5rem;
+    align-items: center;
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    border-bottom: 0.1px solid var(--borderColor);
+}
+
+header .brand h1{
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+header .brand .slogan {
+    margin: .125rem 0 0;
+    color: var(--textColor);
+    font-size: .9rem;
+}
+
+header nav ul li {
+    list-style: none;
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+header nav ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background: url("../img/Poké_Ball_icon.png") no-repeat center/contain;
+    border-radius: 10%;
+}
+
+header nav ul li a {
+    padding: .5rem .75rem;
+    border: 1px solid var(--borderColor);
+    border-radius: var(--radius);
+    transition: background .2s, color .2s border-color .2s;
+    background-color: #f8fdfd;
+}
+
+header nav ul li a:hover {
+    background-color: #ff2626;
+    color: var(--textHooverColor);
+}
+
+header nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    padding: 0;
+    list-style: none;
+}
+
+/* ===================================
+   MAIN
+   =================================== */
+
+main{
+    width: min(1100px, 100%); 
+    padding: 1.25rem;
+    margin: 0 auto;
+}
+
+.seccion{
+    margin: clamp(1rem, 2.5vw, 2rem) 0;
+    padding: clamp(1rem, 2vw, 2rem);
+    background: linear-gradient(0deg, var(--bg-section), var(--bg-section2));
+    border-radius: var(--radius); 
+    box-shadow: var(--shadow);
+    width: 100%;
+}
+
+.producto{
+    background: var(--bg-producto);
+    padding: clamp(1rem, 2vw, 2rem);
+    margin: clamp(1rem, 2.5vw, 2rem) 0;
+    border-radius: var(--radius); box-shadow: var(--shadow);
+}
+
+.menu-categorias{
+    margin: clamp(1rem, 2.5vw, 2rem) 0;
+    padding: clamp(1rem, 2vw, 2rem);
+    background: linear-gradient(0deg, var(--bg-section), var(--bg-section2));
+    border-radius: var(--radius); 
+    box-shadow: var(--shadow);
+    width: 100%;
+}
+
+h2 .seccion {
+    margin-top: 0;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+}
 
 /* ===================================
    COMPONENTS
    =================================== */
 
-.producto {
-    margin-bottom: 20px;
+.boton-detalle {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background: linear-gradient(to bottom, var(--bg-header) 50%, #daf8ff 50%);
+    color: black;
+    text-decoration: none;
+    border: 0.125rem solid #000;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    text-align: center;
 }
 
-.btn-detalle {
+.boton-formulario{
     display: inline-block;
     padding: 0.25rem 0.5rem;
     background: linear-gradient(to bottom, red 50%, white 50%);
@@ -142,5 +216,30 @@ a {
     text-align: center;
 }
 
+form {
+    display: flex;
+    gap: .85rem;
+    color: var(--textSecondary);
+}
+
+input[type="text"], input[type="password"]{
+    padding: .7rem .8rem;
+    border-radius: 12px;
+    border: 1px solid var(--borderColor);
+    background: #ffffff;
+}
+
+input::placeholder{
+    color:grey
+}
+
+/* ===================================
+   RESPONSIVE GRID
+   =================================== */
+
+@media(min-width: 640px){}
+@media(min-width: 900px){}
+@media(min-width: 720px){}
+@media(min-width: 1100px){}
 
 /*El texto principal debe ser de color blanco y el secundario gris */

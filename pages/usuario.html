@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <header class="banner"> 
+    <header class="banner">
         <div class="brand">
             <h1 aria-label="Usuario">Usuario</h1>
             <p class="slogan">¡Atrapálos a todos!</p>
@@ -36,18 +36,21 @@
         </nav>
     </header>
     <main>
-        <form id="login-form">
-            <label for="username">Usuario:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">Iniciar Sesión</button>
-        </form>
-        <p style="margin-top:1em;"><a href="perfil.html">Ir al perfil de entrenador</a></p>
-        <div id="user-info" style="display:none;">
-            <!-- Aquí se mostrará la información del usuario logueado -->
-        </div>
+        <section class="seccion">
+            <form id="login-form">
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+                <button class="boton-formulario" type="submit">Iniciar Sesión</button>
+            </form>
+            <p style="margin-top:1em;"><a href="perfil.html">Ir al perfil de entrenador</a></p>
+            <div id="user-info" style="display:none;">
+                <!-- Aquí se mostrará la información del usuario logueado -->
+            </div>
+        </section>
     </main>
+
     <footer>
         <p>&copy; 2025 Tienda Pokémon. Todos los derechos reservados.</p>
     </footer>
