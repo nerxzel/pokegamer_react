@@ -3,13 +3,13 @@
    =================================== */
 
 :root {
-  --bg: #daf8ff;
+  --bg: #ccdde8;
   --bg2: #a82028;
   --bg-section: #68c8fc;
   --bg-section2: #a7e2f9;
   --bg-producto: #00a6ff;
   --bg-producto2:#94e1ff;;
-  --bg-header:  #ff2626;
+  --bg-header:  #178fd6;
   --gradiente-1: radial-gradient(1200px 800px at 20% -10%, rgba(255, 255, 255, 0.977), transparent);
   --gradiente-2: radial-gradient(1200px 800px at 120% 10%, rgb(198, 226, 250), transparent);
   --bg-gradiente: var(--gradiente-1), var(--gradiente-2);
@@ -46,7 +46,7 @@ html {
 
 body {
     margin: 0;
-    background: var(--bg-gradiente) var(--bg);
+    background: var(--bg);
     color: var(--textColor);
     line-height: 1.6;
     background-attachment: fixed;
@@ -95,7 +95,6 @@ header.banner {
     align-items: center;
     grid-template-columns: 1fr;
     padding: 1rem;
-    border-bottom: 0.1px solid var(--borderColor);
 }
 
 header .brand h1{
