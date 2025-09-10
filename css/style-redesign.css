@@ -1,0 +1,75 @@
+:root {
+  --darkblue: #06397d;
+  --blue: #82add6;
+  --gray: #e4e9f4;
+  --yellow: #facb66;
+  --saffron: #911f1e;
+  font-family: Arial;
+  font-size: 16px;
+}
+
+main{
+  background-color: white;
+}
+
+nav{
+  align-content: middle;
+}
+
+.Logo {
+  width: 100px;
+}
+
+.Productos-Main  {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 16px;
+  row-gap: 16px;
+}
+
+.Producto-Box {
+  transition: box-shadow 0.4s;
+}
+
+.Producto-Box:hover {
+  box-shadow: 0 0 10px black;
+}
+
+.Producto-Info {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.Producto-Precio  {
+  padding-left: 10px;
+  text-align: center;
+}
+
+.Producto-Comprar-Boton {
+  margin-top: 10px;
+  color: #fffcf6;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border: none;
+  background-color: #178fd6;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.Producto-Comprar-Boton:hover {
+  opacity: 0.8;
+}
+
+.Producto-Comprar-Boton:active {
+  background-color: #0d527a;
+
+}
+
+.Producto-Img {
+  width: 100%;
+}
+
+.Producto-Titulo  {
+  text-align: center;
+}
