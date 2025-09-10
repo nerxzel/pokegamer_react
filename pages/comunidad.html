@@ -22,21 +22,24 @@
 <body>
     
     <header class="banner">
-        <div class="brand">
-			<img class="Logo" src="/img/Logo.png" alt="">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="productos.html">Productos</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="comunidad.html">Centro Pokémon</a></li>
-                <li><a href="usuario.html">Usuario</a></li>
-                <li><a href="carrito.html">Carrito</a></li>
-                <li><a href="nosotros.html">Nosotros</a></li>
-            </ul>
-        </nav>
-    </header>
+		<div class="Logo">
+			<img src="/img/Logo.png" alt="">
+		</div>
+		<nav aria-label="Navegación principal">
+			<div class="NavList">
+				<ul>
+					<li><a href="/index.html" data-nav>Inicio</a></li>
+					<li><a href="productos.html" data-nav>Productos</a></li>
+					<li><a href="blog.html" data-nav>Blog</a></li>
+					<li><a href="comunidad.html" data-nav>Centro Pokémon</a></li>
+					<li><a href="usuario.html" data-nav>Usuario</a></li>
+					<li><a href="carrito.html" data-nav>Carrito</a></li>
+					<li><a href="nosotros.html">Nosotros</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div class="Espacio-Vacio"></div>
+	</header>
     <main>
         <section id="foro" class="seccion">
             <h2>Foro del Centro Pokémon</h2>
@@ -75,8 +78,30 @@
         </section>
     </main>
     <footer>
-        <p>&copy; 2025 Tienda Pokémon. Todos los derechos reservados.</p>
-    </footer>
+		<div class="Footer">
+			<div class="Footer-Brand">
+				<img src="/img/Logo.png" alt="Logo Pokémon">
+				<p>Centro Pokémon - ¡Atrapálos a todos!</p>
+			</div>
+
+			<div class="Footer-Contacto">
+				<h4>Contacto</h4>
+				<p>Email: contacto@centropokemon.cl</p>
+				<p>Tel: +569 12345678</p>
+			</div>
+
+			<div class="Footer-Social">
+				<h4>Síguenos</h4>
+				<a href="#"><i class="fab fa-facebook-f"></i></a>
+				<a href="#"><i class="fab fa-twitter"></i></a>
+				<a href="#"><i class="fab fa-instagram"></i></a>
+			</div>
+
+			<div class="Footer-Fondo">
+				<p>&copy; 2025 Tienda Pokémon. Todos los derechos reservados.</p>
+			</div>
+
+	</footer>
 </body>
 
 </html>
