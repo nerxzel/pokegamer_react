@@ -4,21 +4,43 @@
   --gray: #e4e9f4;
   --yellow: #facb66;
   --saffron: #911f1e;
-  font-family: Arial;
-  font-size: 16px;
 }
 
 main{
   background-color: white;
 }
 
+body{
+  font-family: Arial;
+  font-size: 16px;
+}
+
+/*============================
+HEADER
+==============================*/
+
 nav{
   align-content: middle;
+}
+
+header.banner{
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header.banner .Espacio-Vacio {
+  width: 225px;
 }
 
 .Logo {
   width: 100px;
 }
+
+/*============================
+PRODUCTOS
+==============================*/
 
 .Productos-Main  {
   display: grid;
@@ -73,3 +95,20 @@ nav{
 .Producto-Titulo  {
   text-align: center;
 }
+
+
+/*============================
+FOOTER
+==============================*/
+
+footer {
+  background-color: var(--darkblue);
+  color: white;
+  padding: 2rem 1rem;
+}
+
+.footer-brand img {
+  width: 80px;
+  margin-bottom: 0.5rem;
+}
+
