@@ -14,7 +14,6 @@
 	<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">-->
 	<link rel="stylesheet" href="../css/styles-customs.css">
-	<link rel="stylesheet" href="/css/style-redesign.css">
 	<script src="https://kit.fontawesome.com/6f1518c02e.js" crossorigin="anonymous"></script>
 	<link rel="icon" href="/img/Tab-Logo.png">
 </head>
@@ -22,33 +21,114 @@
 <body>
 
 	<header class="banner">
-		<div class="brand">
-			<img class="Logo" src="/img/Logo.png" alt="">
+        <div class="Logo">
+            <img src="/img/Logo.png" alt="">
+        </div>
+        <nav aria-label="Navegación principal">
+            <div class="NavList">
+                <ul>
+                    <li><a href="/index.html" data-nav>Inicio</a></li>
+                    <li><a href="productos.html" data-nav>Productos</a></li>
+                    <li><a href="blog.html" data-nav>Blog</a></li>
+                    <li><a href="comunidad.html" data-nav>Centro Pokémon</a></li>
+                    <li><a href="usuario.html" data-nav>Usuario</a></li>
+                    <li><a href="carrito.html" data-nav>Carrito</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="Espacio-Vacio"></div>
+    </header>
+
+	<main class="Blog-Main">
+		<div class="Blog-Card">
+			<img class="Blog-Img" src="/img/mega-dragonite.png" alt="Noticia Pokémon">
+			<h3 class="Blog-Titulo">Se anuncia primer nuevo mega en AZ</h3>
+			<p class="Blog-Desc">
+				Horrible dragón amarillo destruye los sueños de los niños alrededor del mundo
+			</p>
+			<a href="https://www.youtube.com/watch?v=fWDx1omjIwM" target="_blank" class="Blog-Boton">Ver más</a>
 		</div>
-		<nav>
-			<ul>
-				<li><a href="../index.html">Inicio</a></li>
-				<li><a href="productos.html">Productos</a></li>
-				<li><a href="blog.html">Blog</a></li>
-				<li><a href="comunidad.html">Centro Pokémon</a></li>
-				<li><a href="usuario.html">Usuario</a></li>
-				<li><a href="carrito.html">Carrito</a></li>
-				<li><a href="nosotros.html">Nosotros</a></li>
-			</ul>
-		</nav>
-	</header>
-	<main>
-		<section class="seccion">
-			<article>
-				<h2>Nueva expansión TCG: Paldea</h2>
-				<p>¡Ya disponible la nueva expansión de cartas TCG de la región Paldea!</p>
-			</article>
-			<article>
-				<h2>Pokémon Escarlata y Púrpura</h2>
-				<p>Descubre los nuevos videojuegos de la novena generación.</p>
-			</article>
-		</section>
+
+		<div class="Blog-Card">
+			<img class="Blog-Img" src="/img/noticia-tcg.jpg" alt="Evento Pokémon">
+			<h3 class="Blog-Titulo">El millonario mundo de las cartas Pokemon</h3>
+			<p class="Blog-Desc">
+				En Chile hay unidades que superan los $1,5 millones y hay carpetas cuyo valor alcanzan los $12 millones.
+			</p>
+			<a href="https://www.emol.com/noticias/Economia/2025/08/13/1174905/pokemon-cartas-negocio-millonario.html"
+				target="_blank" class="Blog-Boton">Ver más</a>
+		</div>
+
+		<div class="Blog-Card">
+			<img class="Blog-Img" src="/img/pokemon-go-2025.png" alt="Noticia Pokémon">
+			<h3 class="Blog-Titulo">Niantic vende Pokemon GO</h3>
+			<p class="Blog-Desc">
+				Resulta que Pokémon GO tendrá otro desarrollador, ya que Niantic ha anunciado que será vendido a Scopely
+			</p>
+			<a href="https://www.movilzona.es/noticias/juegos/niantic-vende-pokemon-go" target="_blank"
+				class="Blog-Boton">Ver más</a>
+		</div>
+
+		<div class="Blog-Card">
+			<img class="Blog-Img" src="/img/Mecanica-Pokemon-Patente-1536x864.jpg" alt="Noticia Pokémon">
+			<h3 class="Blog-Titulo">Nintendo patenta una mecánica que puede afectar a muchos juegos</h3>
+			<p class="Blog-Desc">
+				La batalla entre Nintendo y Palworld parece seguir adelante
+			</p>
+			<a href="https://nintenduo.com/nueva-patente-nintendo-mecanica-invocacion-combate" target="_blank"
+				class="Blog-Boton">Ver más</a>
+		</div>
+
+		<div class="Blog-Card">
+			<img class="Blog-Img" src="/img/3VMUGTAFOFFXRHP5S45B4RTZ5U.jpg" alt="Noticia Pokémon">
+			<h3 class="Blog-Titulo">Pokemon anuncia un nuevo ‘Tamagotchi’ oficial con más de 150 criaturas distintas
+			</h3>
+			<p class="Blog-Desc">
+				Poké-Nade es el nuevo juguete interactivo de Pokemon al estilo Tamagotchi
+			</p>
+			<a href="https://as.com/meristation/noticias/pokemon-anuncia-un-nuevo-tamagotchi-oficial-con-mas-de-150-criaturas-distintas-todo-un-sueno-hecho-realidad-n"
+				target="_blank" class="Blog-Boton">Ver más</a>
+		</div>
+
+		<div class="Blog-Card">
+			<img class="Blog-Img" src="/img/miniatura-paradox.jpg" alt="Noticia Pokémon">
+			<h3 class="Blog-Titulo">¿Cómo sería un Battle Royale entre los Pokemon Paradox?</h3>
+			<p class="Blog-Desc">
+				Genial animación restaura los sueños de los niños alrededor del mundo
+			</p>
+			<a href="https://www.youtube.com/watch?v=-OUVRcJMcfQ" target="_blank" class="Blog-Boton">Ver más</a>
+		</div>
+
 	</main>
+
 	<footer>
-		<p>&copy; 2025 Tienda Pokémon. Todos los derechos reservados.</p>
-	</footer>
+		
+        <div class="Footer">
+            <div class="Footer-Brand">
+                <img src="/img/Logo.png" alt="Logo Pokémon">
+                <p>Centro Pokémon - ¡Atrapálos a todos!</p>
+            </div>
+
+            <div class="Footer-Contacto">
+                <h4>Contacto</h4>
+                <p>Email: contacto@centropokemon.cl</p>
+                <p>Tel: +569 12345678</p>
+            </div>
+
+            <div class="Footer-Social">
+                <h4>Síguenos</h4>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+
+            <div class="Footer-Fondo">
+                <p>&copy; 2025 Tienda Pokémon. Todos los derechos reservados.</p>
+            </div>
+
+    </footer>
+
+	</body>
+
+	</html>
