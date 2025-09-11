@@ -123,12 +123,94 @@
     });
 };
 
+
   document.addEventListener('DOMContentLoaded', () => {
     bindProfile();
-    bindProducts()
+    bindProducts();
     if (document.querySelector('.carrito-lista')) {
       renderCart();
     }
+
+    // --- Registro de usuario (solo en usuario.html) ---
+    const form = document.getElementById('form-registro');
+    const mensajeError = document.getElementById('mensaje-error');
+    const mensajeDescuento = document.getElementById('mensaje-descuento');
+    const correoInput = document.getElementById('correo');
+    const fechaNacimientoInput = document.getElementById('fecha-nacimiento');
+
+    if (form && mensajeError && mensajeDescuento && correoInput && fechaNacimientoInput) {
+      function calcularEdad(fechaNacimiento) {
+        const hoy = new Date();
+        const nacimiento = new Date(fechaNacimiento);
+        let edad = hoy.getFullYear() - nacimiento.getFullYear();
+        const m = hoy.getMonth() - nacimiento.getMonth();
+        if (m < 0 || (m === 0 && hoy.getDate() < nacimiento.getDate())) {
+          edad--;
+        }
+        return edad;
+      }
+
+      correoInput.addEventListener('input', function() {
+        if (correoInput.value.trim().toLowerCase().endsWith('@duocuc.cl')) {
+          mensajeDescuento.style.display = 'block';
+          mensajeDescuento.textContent = '¡Felicidades! Obtienes un 20% de descuento permanente por ser usuario Duoc.';
+        } else {
+          mensajeDescuento.style.display = 'none';
+          mensajeDescuento.textContent = '';
+        }
+      });
+
+      form.addEventListener('submit', function(e) {
+        mensajeError.textContent = '';
+        const nombre = document.getElementById('nombre').value.trim();
+        const correo = correoInput.value.trim();
+        const fechaNacimiento = fechaNacimientoInput.value;
+        const password = document.getElementById('password-reg').value;
+        const confirmarPassword = document.getElementById('confirmar-password').value;
+
+        // Validar edad
+        if (!fechaNacimiento) {
+          mensajeError.textContent = 'Debes ingresar tu fecha de nacimiento.';
+          e.preventDefault();
+          return;
+        }
+        const edad = calcularEdad(fechaNacimiento);
+        if (edad < 18) {
+          mensajeError.textContent = 'Debes ser mayor de 18 años para registrarte.';
+          e.preventDefault();
+          return;
+        }
+
+        // Validar contraseñas
+        if (password !== confirmarPassword) {
+          mensajeError.textContent = 'Las contraseñas no coinciden.';
+          e.preventDefault();
+          return;
+        }
+
+        // Validar correo
+        if (!correo.match(/^\S+@\S+\.\S+$/)) {
+          mensajeError.textContent = 'Correo electrónico no válido.';
+          e.preventDefault();
+          return;
+        }
+
+        // Simulación de guardado (puedes reemplazar por integración backend)
+        const usuario = {
+          nombre,
+          correo,
+          fechaNacimiento,
+          descuentoDuoc: correo.toLowerCase().endsWith('@duocuc.cl'),
+        };
+        localStorage.setItem('usuarioRegistrado', JSON.stringify(usuario));
+        alert('¡Registro exitoso!');
+        // Redirigir o limpiar formulario si se desea
+        form.reset();
+        mensajeDescuento.style.display = 'none';
+        e.preventDefault();
+      });
+    }
+    // --- Fin registro usuario ---
   });
 
 })();
