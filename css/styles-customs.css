@@ -170,14 +170,17 @@ body {
     display: flex;
     flex-direction: column;
     /*Para que el footer llegue abajo si es que la página no es muy grande*/
+    gap: 2rem;
+    min-height: 100vh;
 }
 
 main{
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     width: min(1100px, 100%); 
     padding: 1.25rem;
     margin: 0 auto;
     flex: 1;
+    border-radius: var(--radius);
     /*Le da padding y margin al área que engloba el main*/
 }
 
@@ -303,10 +306,10 @@ h2 .seccion {
 }
 
 /* ===================================
-   BLOG
+   NOTICIAS
    =================================== */
 
-.Blog-Main {
+.Noticias-Main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   /*Esto es para que las tarjetas se adapten al espacio disponible, si no caben más la siguiente pasa para abajo*/
@@ -315,7 +318,7 @@ h2 .seccion {
   /*gap para espacio entre tarjetas, y padding para el espacio interno alrededor del grid*/
 }
 
-.Blog-Card {
+.Noticias-Card {
   background: #dffaff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -325,7 +328,7 @@ h2 .seccion {
   flex-direction: column;
 }
 
-.Blog-Img {
+.Noticias-Img {
   width: 100%;
   height: 180px;
   object-fit: cover;
@@ -333,21 +336,21 @@ h2 .seccion {
   margin-bottom: 10px;
 }
 
-.Blog-Titulo {
+.Noticias-Titulo {
   font-family: "Orbitron", sans-serif;
   font-size: 1.2rem;
   margin: 10px 0;
   color: #333;
 }
 
-.Blog-Desc {
+.Noticias-Desc {
   font-family: "Roboto", sans-serif;
   font-size: 0.95rem;
   color: #555;
   margin-bottom: 15px;
 }
 
-.Blog-Boton {
+.Noticias-Boton {
   display: inline-block;
   background-color: #178fd6;;
   color: #fff;
@@ -358,9 +361,45 @@ h2 .seccion {
   align-self: center;
 }
 
-.Blog-Boton:hover {
+.Noticias-Boton:hover {
   background: #cc0000;
 }
+
+/* ===================================
+   EVENTOS
+   =================================== */
+
+  .Eventos-Main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.Eventos-Card {
+  background: #dffaff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.Eventos-Titulo {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #333;
+}
+
+.Eventos-Desc {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 10px;
+}
+
 
 /* ===================================
    FORMULARIOS
