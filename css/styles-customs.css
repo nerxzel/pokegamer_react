@@ -275,6 +275,34 @@ h2 .seccion {
 }
 
 /* ===================================
+   CARRITO
+   =================================== */
+
+.carrito-lista  {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  row-gap: 16px;
+}
+
+.Producto-Img-carro {
+  height: 100%;
+}
+
+.Producto-Box-carro {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  row-gap: 16px;
+  padding: 0.5rem;
+  border: none;
+}
+
+.Producto-info-carro  {
+  text-align: center;
+}
+
+/* ===================================
    BLOG
    =================================== */
 
@@ -357,7 +385,6 @@ input::placeholder{
     color:grey
     /*Color para los textos del placeholder */
 }
-
 
 /* ===================================
    FOOTER
