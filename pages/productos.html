@@ -40,8 +40,21 @@
 		<div class="Espacio-Vacio"></div>
 	</header>
 
+	<div class="menu-categorias">
+  		<input type="text" id="search-input" placeholder="Buscar producto...">
+
+		<div class="filtros">
+			<label><input type="checkbox" class="filtro-categoria" value="peluches"> Peluches</label>
+			<label><input type="checkbox" class="filtro-categoria" value="figuras"> Figuras</label>
+			<label><input type="checkbox" class="filtro-categoria" value="accesorios"> Accesorios</label>
+			<label><input type="checkbox" class="filtro-categoria" value="videojuegos"> Videojuegos</label>
+			<label><input type="checkbox" class="filtro-categoria" value="tcg"> TCG</label>
+		</div>
+	</div>
+
 	<main class="Productos-Main">
-		<div class="Producto-Box">
+
+		<div class="Producto-Box" data-categoria="accesorios">
 			<img class="Producto-Img" src="/img/flotador-lapras.jpg" alt="">
 			<p class="Producto-Titulo">Flotador Lapras</p>
 			<div class="Producto-Info">
@@ -49,15 +62,17 @@
 				<button class="Producto-Comprar-Boton">Agregar al Carro</button>
 			</div>
 		</div>
-		<div class="Producto-Box">
-			<img class="Producto-Img" src="/img/Gameboy-Color-Pokemon.jpg" alt="">
-			<p class="Producto-Titulo">Gameboy Color Edición Pokémon</p>
+
+		<div class="Producto-Box" data-categoria="accesorios">
+			<img class="Producto-Img" src="/img/mismagius.jpg" alt="">
+			<p class="Producto-Titulo">Lanyard Mismagius</p>
 			<div class="Producto-Info">
-				<p class="Producto-Precio">&#36; 350.000</p>
+				<p class="Producto-Precio">&#36; 15.000</p>
 				<button class="Producto-Comprar-Boton">Agregar al Carro</button>
 			</div>
 		</div>
-		<div class="Producto-Box">
+
+		<div class="Producto-Box" data-categoria="accesorios">
 			<img class="Producto-Img" src="/img/Collar-Pikachu.jpg" alt="">
 			<p class="Producto-Titulo">Collar Diamante Pikachu</p>
 			<div class="Producto-Info">
@@ -65,7 +80,35 @@
 				<button class="Producto-Comprar-Boton">Agregar al Carro</button>
 			</div>
 		</div>
-		<div class="Producto-Box">
+
+		<div class="Producto-Box" data-categoria="videojuegos">
+			<img class="Producto-Img" src="/img/Gameboy-Color-Pokemon.jpg" alt="">
+			<p class="Producto-Titulo">Gameboy Color Edición Pokémon</p>
+			<div class="Producto-Info">
+				<p class="Producto-Precio">&#36; 350.000</p>
+				<button class="Producto-Comprar-Boton">Agregar al Carro</button>
+			</div>
+		</div>
+
+		<div class="Producto-Box" data-categoria="videojuegos">
+			<img class="Producto-Img" src="/img/scarlet-violet.jpg" alt="">
+			<p class="Producto-Titulo">Pokemon Escarlata y Violeta - Pack doble</p>
+			<div class="Producto-Info">
+				<p class="Producto-Precio">&#36; 120.000</p>
+				<button class="Producto-Comprar-Boton">Agregar al Carro</button>
+			</div>
+		</div>
+
+		<div class="Producto-Box" data-categoria="videojuegos">
+			<img class="Producto-Img" src="/img/arceus.jpg" alt="">
+			<p class="Producto-Titulo">Pokemon Arceus</p>
+			<div class="Producto-Info">
+				<p class="Producto-Precio">&#36; 70.000</p>
+				<button class="Producto-Comprar-Boton">Agregar al Carro</button>
+			</div>
+		</div>
+
+		<div class="Producto-Box" data-categoria="figuras">
 			<img class="Producto-Img" src="/img/Figura-Gyarados.jpg" alt="">
 			<p class="Producto-Titulo">Figura Gyarados</p>
 			<div class="Producto-Info">
@@ -73,7 +116,26 @@
 				<button class="Producto-Comprar-Boton">Agregar al Carro</button>
 			</div>
 		</div>
-		<div class="Producto-Box">
+
+		<div class="Producto-Box" data-categoria="figuras">
+			<img class="Producto-Img" src="/img/venusaur.jpg" alt="">
+			<p class="Producto-Titulo">Figura Venusaur</p>
+			<div class="Producto-Info">
+				<p class="Producto-Precio">&#36; 120.000</p>
+				<button class="Producto-Comprar-Boton">Agregar al Carro</button>
+			</div>
+		</div>
+
+		<div class="Producto-Box" data-categoria="figuras">
+			<img class="Producto-Img" src="/img/phanpy.jpg" alt="">
+			<p class="Producto-Titulo">Figura Phanpy</p>
+			<div class="Producto-Info">
+				<p class="Producto-Precio">&#36; 20.000</p>
+				<button class="Producto-Comprar-Boton">Agregar al Carro</button>
+			</div>
+		</div>
+
+		<div class="Producto-Box" data-categoria="peluches">
 			<img class="Producto-Img" src="/img/Peluche-Gardevoir.jpg" alt="">
 			<p class="Producto-Titulo">Peluche Tamaño Real Garveoir</p>
 			<div class="Producto-Info">
@@ -81,6 +143,52 @@
 				<button class="Producto-Comprar-Boton">Agregar al Carro</button>
 			</div>
 		</div>
+
+		<div class="Producto-Box" data-categoria="peluches">
+			<img class="Producto-Img" src="/img/mega-gengar-plush.jpg" alt="">
+			<p class="Producto-Titulo">Peluche Mega Gengar</p>
+			<div class="Producto-Info">
+				<p class="Producto-Precio">&#36; 100.000</p>
+				<button class="Producto-Comprar-Boton">Agregar al Carro</button>
+			</div>
+		</div>
+
+		<div class="Producto-Box" data-categoria="peluches">
+			<img class="Producto-Img" src="/img/thundurus-plush.jpg" alt="">
+			<p class="Producto-Titulo">Peluche Thundurus Forma Avatar</p>
+			<div class="Producto-Info">
+				<p class="Producto-Precio">&#36; 600.000</p>
+				<button class="Producto-Comprar-Boton">Agregar al Carro</button>
+			</div>
+		</div>
+
+		<div class="Producto-Box" data-categoria="tcg">
+			<img class="Producto-Img" src="/img/P10780_10-10082-101_01.jpg" alt="">
+			<p class="Producto-Titulo">Cofre para Cartas Sylveon</p>
+			<div class="Producto-Info">
+				<p class="Producto-Precio">&#36; 50.000</p>
+				<button class="Producto-Comprar-Boton">Agregar al Carro</button>
+			</div>
+		</div>
+
+		<div class="Producto-Box" data-categoria="tcg">
+			<img class="Producto-Img" src="/img/P7737_179-80917_04.jpg" alt="">
+			<p class="Producto-Titulo">Booster Pack Pokemon Espada y Escudo - Fusion Strike</p>
+			<div class="Producto-Info">
+				<p class="Producto-Precio">&#36; 5.000</p>
+				<button class="Producto-Comprar-Boton">Agregar al Carro</button>
+			</div>
+		</div>
+
+		<div class="Producto-Box" data-categoria="tcg">
+			<img class="Producto-Img" src="/img/display-box.jpg" alt="">
+			<p class="Producto-Titulo">Booster Display Box Mega Evolution Enhaced</p>
+			<div class="Producto-Info">
+				<p class="Producto-Precio">&#36; 120.000</p>
+				<button class="Producto-Comprar-Boton">Agregar al Carro</button>
+			</div>
+		</div>
+		
 	</main>
 
 	<footer>
@@ -99,9 +207,14 @@
 
 			<div class="Footer-Social">
 				<h4>Síguenos</h4>
-				<a href="#"><i class="fab fa-facebook-f"></i></a>
-				<a href="#"><i class="fab fa-twitter"></i></a>
-				<a href="#"><i class="fab fa-instagram"></i></a>
+				<a href="https://www.facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+				<a href="https://x.com" target="_blank" title="X"><i class="fab fa-twitter"></i></a>
+				<a href="https://www.instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+			</div>
+
+			<div class="Footer-Social">
+				<h4>Soporte Técnico</h4>
+				<a href="https://wa.me/56912345678" target="_blank" title="Soporte Técnico por WhatsApp"> <i class="fab fa-whatsapp"></i></a>
 			</div>
 
 			<div class="Footer-Fondo">
@@ -111,6 +224,7 @@
 	</footer>
 
 	<script src="/js/app.js" defer></script>
+	<script src="/js/filtro.js" defer></script>
 
 </body>
 
