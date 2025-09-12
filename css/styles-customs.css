@@ -203,15 +203,6 @@ main{
     /*Básicamente lo mismo que en .seccion, pero para los productos que lleva dentro*/
 }
 
-.menu-categorias{
-    margin: clamp(1rem, 2.5vw, 2rem) 0;
-    padding: clamp(1rem, 2vw, 2rem);
-    background: linear-gradient(0deg, var(--bg-section), var(--bg-section2));
-    border-radius: var(--radius); 
-    box-shadow: var(--shadow);
-    width: 100%;
-    /* Estilo del menú de categorías parecido a secciones */
-}
 
 h2 .seccion {
     margin-top: 0;
@@ -275,6 +266,24 @@ h2 .seccion {
 
 .Producto-Titulo  {
   text-align: center;
+}
+
+.menu-categorias {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;    
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  background: linear-gradient(0deg, var(--bg-section), var(--bg-section2));
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.filtros label {
+  margin-right: 15px;
+  font-weight: bold;
 }
 
 /* ===================================
