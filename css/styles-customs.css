@@ -28,7 +28,7 @@
   --colorAnchorHover: #ff0000;
   --borderColor: #fff;
   --radius: 1rem;
-  --shadow: 0.625rem 1rem rgba(32, 32, 32, 0.529);
+  --shadow: 0.625rem 1rem 10px rgba(32, 32, 32, 0.529);
   --paddingBlock: clamp(1rem, 2vw, 2rem);
 }
 
@@ -465,6 +465,17 @@ footer {
 }
 
 .Footer-Social a:hover {
+  color: black;
+}
+
+.Footer-Contacto a {
+  color: white;
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.Footer-Contacto a:hover {
   color: black;
 }
 
