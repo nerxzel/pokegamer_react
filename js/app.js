@@ -47,7 +47,7 @@
       //state.profile.prefs = prefInputs.filter(i => i.checked).map(i => i.value || i.id);
       saveState();
       //toast('Perfil actualizado');
-      alert("HOLA")
+      alert("Sesión iniciada")
     });
   };
 
@@ -105,7 +105,7 @@
         <input type="number" value="1" min="1">
         <p class="Producto-info-carro">$${item.precio.toLocaleString()}</p>
         <p class="Producto-info-carro">$${item.precio}</p>
-        <button class="Producto-Comprar-Boton" data-action="delete" id="borrar-item">Eliminar</button>
+        <button class="Noticias-Boton" data-action="delete" id="borrar-item">Eliminar</button>
       </div>
     `).join('');
 
