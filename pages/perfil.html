@@ -42,37 +42,105 @@
     <main>
 
         <section id="info-entrenador" class="seccion">
-            <h2>Bienvenido, Entrenador</h2>
-            <p>Aquí puedes ver y editar la información de tu perfil.</p>
-            <ul>
-                <li><strong>Nombre de usuario:</strong> <span id="nombre-usuario">AshKetchum</span></li>
-                <li><strong>Email:</strong> <span id="email-usuario">ash@poke.com</span></li>
-                <li><strong>País de residencia:</strong> <span id="pais-usuario">Japón</span></li>
-                <li><strong>Región favorita:</strong> <span id="region-usuario">Kanto</span></li>
-                <li><strong>Pokémon inicial:</strong> <span id="pokemon-inicial">Pikachu</span></li>
-            </ul>
+            <h2>Bienvenido, <span id="nombre-usuario">Entrenador</span></h2>
+            <p>Aquí puedes ver los datos básicos de tu cuenta.</p>
+                                    <ul>
+                                            <li><strong>Nombre:</strong> <span id="nombre-completo">-</span></li>
+                                            <li><strong>Apellidos:</strong> <span id="apellidos-usuario">-</span></li>
+                                            <li><strong>Email (no editable):</strong> <span id="email-usuario">-</span></li>
+                                            <li><strong>Fecha de nacimiento:</strong> <span id="fecha-nacimiento-usuario">-</span></li>
+                                            <li><strong>Dirección principal:</strong> <span id="direccion-usuario">-</span></li>
+                                            <li><strong>Comuna:</strong> <span id="comuna-usuario">-</span></li>
+                                            <li><strong>Región:</strong> <span id="region-usuario">-</span></li>
+                                            <li><strong>Teléfono principal:</strong> <span id="telefono-usuario">-</span></li>
+                                            <li id="fila-beneficio" style="display:none;"><strong>Beneficio DUOC:</strong> <span id="beneficio-duoc">20% permanente</span></li>
+                                    </ul>
+
+                                    <details style="margin-top:1.2rem;">
+                                        <summary style="cursor:pointer;font-weight:bold;">Editar perfil</summary>
+                                        <form id="form-editar-perfil" style="margin-top:.8rem;display:flex;flex-direction:column;gap:.7rem;max-width:480px;">
+                                            <div style="display:flex;gap:.8rem;flex-wrap:wrap;">
+                                                <div style="flex:1;min-width:180px;display:flex;flex-direction:column;">
+                                                    <label for="editar-nombre">Nombre:</label>
+                                                    <input type="text" id="editar-nombre" required>
+                                                </div>
+                                                <div style="flex:1;min-width:180px;display:flex;flex-direction:column;">
+                                                    <label for="editar-apellidos">Apellidos:</label>
+                                                    <input type="text" id="editar-apellidos" required>
+                                                </div>
+                                            </div>
+                                            <div style="display:flex;gap:.8rem;flex-wrap:wrap;">
+                                                <div style="flex:1;min-width:180px;display:flex;flex-direction:column;">
+                                                    <label for="editar-fecha">Fecha nacimiento:</label>
+                                                    <input type="date" id="editar-fecha" required>
+                                                </div>
+                                                <div style="flex:1;min-width:180px;display:flex;flex-direction:column;">
+                                                    <label for="editar-telefono-perfil">Teléfono principal:</label>
+                                                    <input type="tel" id="editar-telefono-perfil" required>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="Producto-Comprar-Boton">Guardar perfil</button>
+                                            <div id="mensaje-perfil" style="min-height:1.1em;font-size:.8rem;font-weight:bold;color:#0c6;"></div>
+                                        </form>
+                                    </details>
+
+                                    <details style="margin-top:1.2rem;">
+                                        <summary style="cursor:pointer;font-weight:bold;">Direcciones de envío</summary>
+                                        <div id="direcciones-wrapper" style="margin-top:.8rem;display:flex;flex-direction:column;gap:.9rem;max-width:640px;">
+                                            <div id="lista-direcciones" style="display:flex;flex-direction:column;gap:.6rem;"></div>
+                                                            <form id="form-agregar-direccion" style="display:flex;flex-direction:column;gap:.6rem;border:1px solid rgba(255,255,255,.15);padding:1rem;border-radius:8px;">
+                                                <h4 style="margin:0;font-size:1rem;">Agregar nueva dirección</h4>
+                                                <div style="display:flex;flex-direction:column;">
+                                                    <label for="nueva-etiqueta">Etiqueta (ej: Casa, Trabajo):</label>
+                                                    <input type="text" id="nueva-etiqueta" placeholder="Casa" required>
+                                                </div>
+                                                <div style="display:flex;flex-direction:column;">
+                                                    <label for="nueva-direccion">Dirección:</label>
+                                                    <input type="text" id="nueva-direccion" required>
+                                                </div>
+                                                                <div style="display:flex;flex-direction:column;">
+                                                                    <label for="nueva-comuna">Comuna:</label>
+                                                                    <input type="text" id="nueva-comuna" required>
+                                                                </div>
+                                                                <div style="display:flex;flex-direction:column;">
+                                                                    <label for="nueva-region">Región:</label>
+                                                                    <input type="text" id="nueva-region" required>
+                                                                </div>
+                                                <div style="display:flex;flex-direction:column;">
+                                                    <label for="nueva-telefono">Teléfono:</label>
+                                                    <input type="tel" id="nueva-telefono" required>
+                                                </div>
+                                                <label style="display:flex;align-items:center;gap:.4rem;font-size:.85rem;">
+                                                    <input type="checkbox" id="nueva-principal"> Marcar como principal
+                                                </label>
+                                                <button type="submit" class="Producto-Comprar-Boton">Guardar dirección</button>
+                                                <div id="mensaje-direccion" style="min-height:1.1em;font-size:.75rem;font-weight:bold;color:#0c6;"></div>
+                                            </form>
+                                                            <!-- Historial de cambios ocultado a petición: se mantiene lógica JS pero no se muestra UI -->
+                                                            <!-- <div id="historial-direcciones" style="margin-top:1.2rem;">
+                                                                <h4 style="margin:0 0 .5rem;font-size:1rem;">Historial de cambios</h4>
+                                                                <ul id="lista-historial-direcciones" style="list-style:disc;margin-left:1.2rem;font-size:.75rem;line-height:1.3;opacity:.85;"></ul>
+                                                            </div> -->
+                                        </div>
+                                    </details>
+                        <div style="margin-top:1em;display:flex;gap:.6em;flex-wrap:wrap;">
+                            <button id="cerrar-sesion" class="Producto-Comprar-Boton">Cerrar Sesión</button>
+                        </div>
         </section>
         <section id="historial-compras" class="seccion">
             <h2>Historial de compras</h2>
-            <ul>
-                <li>Poké Ball x10 - $5.000 CLP - 15/08/2025</li>
-                <li>Set de Cartas Kanto - $25.000 CLP - 10/08/2025</li>
-                <li>Nintendo Switch Edición Galar - $250.000 CLP - 01/08/2025</li>
-            </ul>
+            <ul id="lista-compras"></ul>
+            <p id="compras-vacio" style="display:none;font-style:italic;color:#555;">Aún no tienes compras registradas.</p>
         </section>
         <section id="comentarios-aportes" class="seccion">
             <h2>Comentarios y aportes en la comunidad</h2>
-            <ul>
-                <li>Comentario en "Guía para nuevos entrenadores" - 12/08/2025</li>
-                <li>Aporte: "Mi experiencia en la Liga Pokémon" - 05/08/2025</li>
-            </ul>
+            <ul id="lista-comentarios"></ul>
+            <p id="comentarios-vacio" style="display:none;font-style:italic;color:#555;">Todavía no has participado en la comunidad.</p>
         </section>
         <section id="bandeja-entrada" class="seccion">
             <h2>Bandeja de entrada</h2>
-            <ul>
-                <li><strong>De:</strong> Misty - "¡Hola Ash! ¿Listo para la próxima batalla?"</li>
-                <li><strong>De:</strong> Brock - "No olvides tus provisiones para el viaje."</li>
-            </ul>
+            <ul id="lista-mensajes"></ul>
+            <p id="mensajes-vacio" style="display:none;font-style:italic;color:#555;">No tienes mensajes todavía.</p>
         </section>
 
     </main>
@@ -106,6 +174,7 @@
 
     </footer>
     
+<script src="../js/app.js"></script>
 </body>
 
 </html>

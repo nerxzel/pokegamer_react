@@ -43,10 +43,16 @@
     <main>
         <section class="seccion">
             <ul class="carrito-lista" id="carrito-lista"></ul>
-            <div class="carrito-total">
+            <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.5rem;">
+              <button id="vaciar-carrito-btn" class="Producto-Comprar-Boton">Vaciar carrito</button>
+              <button id="comprar-btn" class="Producto-Comprar-Boton">Finalizar compra</button>
+            </div>
+            <div class="carrito-total" style="margin-top:1rem;">
                 <span>Total:</span> <span id="carrito-total-precio">$0.00</span>
             </div>
-            <button id="comprar-btn">Comprar</button>
+            <div id="carrito-resumen-descuento" style="margin-top:1rem; background:rgba(0,0,0,.35); backdrop-filter:blur(4px); padding:1rem; border:1px solid rgba(255,255,255,.18); border-radius:12px; color:#e6ecf2; box-shadow:0 4px 18px rgba(0,0,0,.35);">
+                <p style="margin:0; font-size:.8rem; opacity:.75;">Añade productos para ver el detalle.</p>
+            </div>
         </section>
     </main>
 
