@@ -186,89 +186,106 @@
   };
   
   const renderCart = () => {
-    // Sincronizar antes de renderizar (por cambio de usuario en caliente)
     ensureCartSync();
     const lista = $('#carrito-lista');
-    const totalSpan = $('#carrito-total-precio');
+    const subtotalEl = document.getElementById('carrito-subtotal');
+    const ivaEl = document.getElementById('carrito-iva');
+    const totalEl = document.getElementById('carrito-total-pagar');
+    const resumen = document.getElementById('carrito-resumen');
+    const resumenDetalle = document.getElementById('carrito-resumen-detalle');
+    const resumenPlaceholder = document.getElementById('carrito-resumen-placeholder');
+    const descuentoLinea = document.getElementById('carrito-descuento-linea');
+    const bloqueAcciones = document.getElementById('carrito-acciones');
     const usuario = getUsuarioActual();
     const esDuoc = !!usuario?.descuentoDuoc;
-    if(!lista || !totalSpan) return;
-
-    // Normalizar cantidades
+    if(!lista) return;
     state.cart.forEach(it => { if(typeof it.cantidad !== 'number' || it.cantidad < 1) it.cantidad = 1; });
+    const vacio = state.cart.length === 0;
+    if(vacio){
+      lista.innerHTML = `
+        <li style="list-style:none; width:100%; max-width:520px; margin-top:1rem;">
+          <div style="padding:1.2rem 1.2rem 1.4rem; border:1px dashed rgba(255,255,255,.28); border-radius:14px; background:linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); backdrop-filter:blur(6px); text-align:center;">
+            <p style="margin:0 0 .9rem; font-size:1rem; font-weight:500; letter-spacing:.5px;">El carrito de compras está vacío</p>
+            <button class="Producto-Comprar-Boton" style="padding:.65rem 1.1rem;" onclick="window.location.href='productos.html'">Ir a productos</button>
+          </div>
+        </li>`;
+    } else {
+      lista.innerHTML = state.cart.map((item, idx) => {
+        const baseUnit = item.precioBase ?? item.precio;
+        const unitFinal = esDuoc ? Math.round(baseUnit * 0.8) : baseUnit;
+        const lineFinal = unitFinal * item.cantidad;
+        return `
+        <div class="Producto-Box-carro" data-index="${idx}">
+          <img class="Producto-Img-carro" src="${item.imagen}" alt="">
+          <p class="Producto-info-carro">${item.nombre}</p>
+          <div style="display:flex;align-items:center;gap:.25rem;">
+            <button data-action="decrementar" aria-label="Restar">-</button>
+            <input data-action="cantidad" type="number" value="${item.cantidad}" min="1" style="width:55px;text-align:center;">
+            <button data-action="incrementar" aria-label="Sumar">+</button>
+          </div>
+          <p class="Producto-info-carro">$${lineFinal.toLocaleString()}${esDuoc ? ' <span style=\"color:#0c6; font-size:.65rem; font-weight:bold;\">-20%</span>' : ''}</p>
+          <button class="Producto-Comprar-Boton" data-action="delete" id="borrar-item">Eliminar</button>
+        </div>`;
+      }).join('');
+    }
 
-    lista.innerHTML = state.cart.map((item, idx) => {
-      const baseUnit = item.precioBase ?? item.precio;
-      const unitFinal = esDuoc ? Math.round(baseUnit * 0.8) : baseUnit;
-      const lineFinal = unitFinal * item.cantidad;
-      return `
-      <div class="Producto-Box-carro" data-index="${idx}">
-        <img class="Producto-Img-carro" src="${item.imagen}" alt="">
-        <p class="Producto-info-carro">${item.nombre}</p>
-        <div style="display:flex;align-items:center;gap:.25rem;">
-          <button data-action="decrementar" aria-label="Restar">-</button>
-          <input data-action="cantidad" type="number" value="${item.cantidad}" min="1" style="width:55px;text-align:center;">
-          <button data-action="incrementar" aria-label="Sumar">+</button>
-        </div>
-        <p class="Producto-info-carro">$${lineFinal.toLocaleString()}${esDuoc ? ' <span style="color:#0c6; font-size:.65rem; font-weight:bold;">-20%</span>' : ''}</p>
-        <button class="Producto-Comprar-Boton" data-action="delete" id="borrar-item">Eliminar</button>
-      </div>`;
-    }).join('');
-
+    // Cálculos
     const subtotal = state.cart.reduce((sum, item) => sum + (item.precioBase ?? item.precio) * item.cantidad, 0);
-    const descuento = esDuoc ? Math.round(subtotal * 0.20) : 0;
+    const descuento = esDuoc ? Math.round(subtotal * 0.20) : 0; 
     const baseConDescuento = subtotal - descuento;
     const iva = Math.round(baseConDescuento * 0.19);
     const total = baseConDescuento + iva;
-    totalSpan.textContent = `$${total.toLocaleString()}`;
 
-    const resumen = document.getElementById('carrito-resumen-descuento');
-    if(resumen){
-      resumen.innerHTML = `
-        <p><strong>Subtotal:</strong> $${subtotal.toLocaleString()}</p>
-        ${descuento ? `<p><strong>Descuento:</strong> -$${descuento.toLocaleString()}</p>` : ''}
-        <p><strong>IVA (19%):</strong> $${iva.toLocaleString()}</p>
-        <hr style="border-color:rgba(255,255,255,.2);">
-        <p style="font-size:1.05rem;"><strong>Total a pagar:</strong> $${total.toLocaleString()}</p>
-        ${esDuoc ? '<p style="font-size:.7rem;opacity:.7;">Beneficio comunidad Duoc</p>' : ''}`;
+    if(resumen){ resumen.style.display = vacio ? 'none' : 'block'; }
+    if(bloqueAcciones){ bloqueAcciones.style.display = vacio ? 'none' : 'flex'; }
+
+    if(!vacio && subtotalEl && ivaEl && totalEl){
+      subtotalEl.textContent = `$${subtotal.toLocaleString()}`;
+      ivaEl.textContent = `$${iva.toLocaleString()}`;
+      totalEl.textContent = `$${total.toLocaleString()}`;
+      if(resumenDetalle) resumenDetalle.style.display = 'block';
+      if(resumenPlaceholder) resumenPlaceholder.style.display = 'none';
+      if(descuentoLinea) descuentoLinea.style.display = esDuoc ? 'block' : 'none';
     }
 
-    // Handlers
-    lista.querySelectorAll('[data-action="delete"]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const idx = btn.closest('.Producto-Box-carro').dataset.index;
-        state.cart.splice(idx,1);
-        saveState();
-        renderCart();
+    // Handlers solo si no está vacío
+    if(!vacio){
+      lista.querySelectorAll('[data-action="delete"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = btn.closest('.Producto-Box-carro').dataset.index;
+          state.cart.splice(idx,1);
+          saveState();
+          renderCart();
+        });
       });
-    });
-    lista.querySelectorAll('input[data-action="cantidad"]').forEach(inp => {
-      inp.addEventListener('change', () => {
-        const parent = inp.closest('.Producto-Box-carro');
-        if(!parent) return;
-        const idx = parent.dataset.index;
-        let val = parseInt(inp.value,10); if(isNaN(val)||val<1) val=1;
-        state.cart[idx].cantidad = val;
-        saveState();
-        renderCart();
+      lista.querySelectorAll('input[data-action="cantidad"]').forEach(inp => {
+        inp.addEventListener('change', () => {
+          const parent = inp.closest('.Producto-Box-carro');
+          if(!parent) return;
+          const idx = parent.dataset.index;
+          let val = parseInt(inp.value,10); if(isNaN(val)||val<1) val=1;
+          state.cart[idx].cantidad = val;
+          saveState();
+          renderCart();
+        });
       });
-    });
-    lista.querySelectorAll('[data-action="incrementar"]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const idx = btn.closest('.Producto-Box-carro').dataset.index;
-        state.cart[idx].cantidad++;
-        saveState();
-        renderCart();
+      lista.querySelectorAll('[data-action="incrementar"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = btn.closest('.Producto-Box-carro').dataset.index;
+          state.cart[idx].cantidad++;
+          saveState();
+          renderCart();
+        });
       });
-    });
-    lista.querySelectorAll('[data-action="decrementar"]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const idx = btn.closest('.Producto-Box-carro').dataset.index;
-        state.cart[idx].cantidad = Math.max(1, state.cart[idx].cantidad - 1);
-        saveState();
-        renderCart();
+      lista.querySelectorAll('[data-action="decrementar"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = btn.closest('.Producto-Box-carro').dataset.index;
+          state.cart[idx].cantidad = Math.max(1, state.cart[idx].cantidad - 1);
+          saveState();
+          renderCart();
+        });
       });
-    });
+    }
   };
 
 
@@ -604,7 +621,7 @@
         const correo = correoInput.value.trim();
         const fechaNacimiento = fechaNacimientoInput.value;
         const password = document.getElementById('password-reg').value;
-        const confirmarPassword = document.getElementById('confirmar-password').value;
+        const confirmarPassword = document.getElementById('confirmar-registro').value;
 
         // Validar edad
         if (!fechaNacimiento) {
@@ -710,7 +727,7 @@
     const dirSpan = document.getElementById('direccion-usuario'); if(dirSpan) dirSpan.textContent = principal? principal.direccion : '-';
     const comunaSpan = document.getElementById('comuna-usuario'); if(comunaSpan) comunaSpan.textContent = principal? (principal.comuna||'-') : '-';
     const regionSpan = document.getElementById('region-usuario'); if(regionSpan) regionSpan.textContent = principal? (principal.region||'-') : '-';
-    const telSpan = document.getElementById('telefono-usuario'); if(telSpan) telSpan.textContent = principal? principal.telefono : '-';
+    const telSpan = document.getElementById('telefono-usuario'); if(telSpan) telE.textContent = principal? principal.telefono : '-';
 
     // Persistir cambios de usuario en arreglo global 'usuarios'
     function guardarUsuarios(uActualizado){
