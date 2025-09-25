@@ -1,4 +1,4 @@
-import Logo from '../assets/Logo.png';
+import Logo from "../../assets/Logo.png";
 
 export default function AppFooter() {
     return (
