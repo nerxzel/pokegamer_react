@@ -7,7 +7,6 @@ export default function AppFooter() {
 
             <div className="Footer">
                 <div className="Footer-Brand">
-                    {/* Cambio: La etiqueta <img> debe autocerrarse con "/>" */}
                     <img src={Logo} alt="Logo Pokémon" />
                     <p>Centro Pokémon - ¡Atrapálos a todos!</p>
                 </div>
@@ -17,7 +16,6 @@ export default function AppFooter() {
                     <p>Email: serviciotecnico@centropokemon.cl</p>
                     <p>Tel: +569 12345678</p>
                     <a href="#">
-                        {/* No requiere cambios, pero es bueno saber que las clases de FontAwesome funcionan igual */}
                         <i className="fab fa-whatsapp"></i>
                     </a>
                 </div>
@@ -31,7 +29,6 @@ export default function AppFooter() {
                 </div>
 
                 <div className="Footer-Fondo">
-                    {/* El &copy; funciona sin problemas en JSX */}
                     <p>&copy; 2025 Tienda Pokémon. Todos los derechos reservados.</p>
                 </div>
             </div>

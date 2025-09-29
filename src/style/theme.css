@@ -1,3 +1,7 @@
+/* ===================================
+   VARIABLES
+   =================================== */
+
 :root {
   --darkblue: #06397d;
   --blue: #82add6;
@@ -28,7 +32,505 @@
   --paddingBlock: clamp(1rem, 2vw, 2rem);
 }
 
+/* ===================================
+   GLOBAL
+   =================================== */
+
+
+* {
+    font-family: var(--text);
+    box-sizing: border-box;
+    /* Le da a todo el sitio una fuente y hace que el padding 
+    y border se incluya cuando damos width y height  */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    /* El html y el body ocupan el 100% de la pantalla del navegador */
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Al hacer click en un anchor que te hace scrollear el movimiento es más suave */
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    /* Es para que la imagen no sobrepase el ancho de su contenedor y no ocupe espacio extra debajo */
+}
+
+input,
+select,
+textarea,
+button {
+    font: inherit;
+    color: inherit;
+    /* Esto hace que todas las cosas que lleven esas etiquetas hereden fuente y color de texto de
+    sus contenedores padres */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: var(--titles);
+    /* Se le da a todos los tamños de titulo la misma fuenta a través de una variable*/
+}
+
+a {
+    color: var(--colorAnchor);
+    text-decoration: none;
+    /* Le da a todos los anchor un color a través de una variable y les elimina el subrayados*/
+}
+
+/* ===================================
+   HEADER
+   =================================== */
+
+header .Logo {
+  width: 100px;
+}
+
+header.banner {    
+    background:var(--bg-header);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    font-weight: bold;
+    /*Le da color al header, lo mantiene en posición mientras se scrollea y ordena los componentes que tiene dentro */
+}
+
+header nav ul li {
+    list-style: none;
+    position: relative;
+    padding-left: 1.2rem;
+    /*Quita los puntitos de la lista y hace un espacio para poner iconos (las pokebolas en este caso)*/
+}
+
+header nav ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background: url("/img/Poké_Ball_icon.png") no-repeat center/contain;
+    border-radius: 10%;
+}
+
+header nav ul li a {
+    padding: .5rem .75rem;
+    border: 1px solid var(--borderColor);
+    border-radius: var(--radius);
+    transition: background .2s, color .2s border-color .2s;
+    background-color: #f8fdfd;
+    /*Le da forma a la lista del menú del header y también suaviza la transición al hover*/
+}
+
+header nav ul li a:hover {
+    background-color: #ff2626;
+    color: var(--textHooverColor);
+}
+
+header nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    padding: 0;
+    list-style: none;
+    /*Organiza el menú del header de forma horizontal*/
+}
+
+header.banner .Espacio-Vacio {
+  width: 170px;
+  /*Un div vacio en el header. Usamos su ancho para mover el menú más a la izquierda*/
+}
+
+/* ===================================
+   BODY
+   =================================== */
+
 body {
-    background-color: var(--bg);
+    margin: 0;
+    background: var(--bg);
     color: var(--textColor);
+    line-height: 1.6;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    /*Define fondo, color y espaciado general del texto*/
+    display: flex;
+    flex-direction: column;
+    /*Para que el footer llegue abajo si es que la página no es muy grande*/
+    gap: 2rem;
+    min-height: 100vh;
+}
+
+main{
+    background-color: rgb(255, 255, 255);
+    width: min(1100px, 100%); 
+    padding: 1.25rem;
+    margin: 0 auto;
+    flex: 1;
+    border-radius: var(--radius);
+    /*Le da padding y margin al área que engloba el main*/
+}
+
+.seccion{
+    margin: clamp(1rem, 2.5vw, 2rem) 0;
+    padding: clamp(1rem, 2vw, 2rem);
+    background: linear-gradient(0deg, var(--bg-section), var(--bg-section2));
+    border-radius: var(--radius); 
+    box-shadow: var(--shadow);
+    width: 100%;
+    /*Crea una caja con estilo para las secciones con color y sombreado*/
+}
+
+.producto{
+    background: var(--bg-producto);
+    padding: clamp(1rem, 2vw, 2rem);
+    margin: clamp(1rem, 2.5vw, 2rem) 0;
+    border-radius: var(--radius); 
+    box-shadow: var(--shadow);
+    /*Básicamente lo mismo que en .seccion, pero para los productos que lleva dentro*/
+}
+
+
+h2 .seccion {
+    margin-top: 0;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    /* Tamaño y margen estándar para todos los titulos h2 dentro de las secciones */
+}
+
+/* ===================================
+   PRODUCTOS
+   =================================== */
+
+.Productos-Main  {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 16px;
+  row-gap: 16px;
+}
+
+.Producto-Box {
+  transition: box-shadow 0.4s;
+}
+
+.Producto-Box:hover {
+  box-shadow: 0 0 10px black;
+}
+
+.Producto-Info {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.Producto-Precio  {
+  padding-left: 10px;
+  text-align: center;
+}
+
+.Producto-Comprar-Boton {
+  margin-top: 10px;
+  color: #fffcf6;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border: none;
+  background-color: #178fd6;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.Producto-Comprar-Boton:hover {
+  opacity: 0.8;
+}
+
+.Producto-Comprar-Boton:active {
+  background-color: #0d527a;
+
+}
+
+.Producto-Img {
+  width: 100%;
+}
+
+.Producto-Titulo  {
+  text-align: center;
+}
+
+.menu-categorias {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;    
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  background: linear-gradient(0deg, var(--bg-section), var(--bg-section2));
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.filtros label {
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+/* ===================================
+   CARRITO
+   =================================== */
+
+.carrito-lista  {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  row-gap: 16px;
+}
+
+.Producto-Img-carro {
+  height: 100%;
+}
+
+.Producto-Box-carro {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  row-gap: 16px;
+  padding: 0.5rem;
+  border: none;
+}
+
+.Producto-info-carro  {
+  text-align: center;
+}
+
+/* ===================================
+   NOTICIAS
+   =================================== */
+
+.Noticias-Main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /*Esto es para que las tarjetas se adapten al espacio disponible, si no caben más la siguiente pasa para abajo*/
+  gap: 20px;
+  padding: 20px;
+  /*gap para espacio entre tarjetas, y padding para el espacio interno alrededor del grid*/
+}
+
+.Noticias-Card {
+  background: #dffaff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.Noticias-Img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.Noticias-Titulo {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #333;
+}
+
+.Noticias-Desc {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.Noticias-Boton {
+  display: inline-block;
+  background-color: #178fd6;;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s;
+  align-self: center;
+}
+
+.Noticias-Boton:hover {
+  background: #cc0000;
+}
+
+/* ===================================
+   EVENTOS
+   =================================== */
+
+  .Eventos-Main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.Eventos-Card {
+  background: #dffaff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.Eventos-Titulo {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #333;
+}
+
+.Eventos-Desc {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+
+/* ===================================
+   FORMULARIOS
+   =================================== */
+
+form {
+    display: flex;
+    gap: .85rem;
+    color: var(--textSecondary);
+    /*Ordena los inputs en línea y les da color*/
+}
+
+input[type="text"], input[type="password"]{
+    padding: .7rem .8rem;
+    border-radius: 12px;
+    border: 1px solid var(--borderColor);
+    background: #ffffff;
+    /*Estilo general para los campos de texto y password*/
+}
+
+input::placeholder{
+    color:grey
+    /*Color para los textos del placeholder */
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+
+footer {
+  background-color: var(--bg-header);
+  color: black;
+  padding: 2rem 1rem ;
+  /*Da color al fondo del footer, */
+}
+
+.Footer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.Footer-Brand img {
+  width: 80px;
+  margin-bottom: 0.5rem;
+}
+
+.Footer-Social a {
+  color: white;
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.Footer-Social a:hover {
+  color: black;
+}
+
+.Footer-Contacto a {
+  color: white;
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.Footer-Contacto a:hover {
+  color: black;
+}
+
+.Footer-Fondo {
+  text-align: center;
+  padding-top: 1rem;
+  font-size: 0.9rem;
+}
+
+
+/* ===================================
+   RESPONSIVE GRID
+   =================================== */
+
+@media(max-width: 640px) {
+  
+   /* Header */
+  header nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header.banner {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .Espacio-Vacio {
+    display: none; /* ya no hace falta el "espaciador" en mobile */
+  }
+
+  /* Footer */
+  .Footer {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  /* Noticias y eventos */
+  .Noticias-Img,
+  .Eventos-Card img {
+    height: 150px; /* más compactas */
+  }
+
+  /* Productos: de 3 columnas → 1 columna */
+  .Productos-Main {
+    grid-template-columns: 1fr;
+  }
+
+  .Producto-Info {
+    grid-template-columns: 1fr; /* imagen arriba, texto abajo */
+  }
+
+  /* Carrito: simplificar columnas */
+  .Producto-Box-carro {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    row-gap: 8px;
+  }
 }

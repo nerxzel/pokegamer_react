@@ -1,25 +1,28 @@
-import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import logo from '../../assets/Logo.png';
 
-export default function AppNavbar(){
+export default function AppNavbar() {
     return (
-        <Navbar expand="lg" bg="dark" data-bs-theme="dark" className="border-bottom" aria-label="Main">
-            <Container>
-                <Navbar.Brand as={Link} to="/">Pokegamer</Navbar.Brand>
-                <Navbar.Toggle aria-controls="mainNav" />
-                <Navbar.Collapse id="mainNav">
-                    <Nav className="ms-auto">
-                        <Nav.Link as={Link} to="/inicio">Inicio</Nav.Link>
-                        <Nav.Link as={Link} to="/productos">Productos</Nav.Link>
-                        <Nav.Link as={Link} to="/noticias">Noticias</Nav.Link>
-                        <Nav.Link as={Link} to="/comunidad">Comunidad</Nav.Link>
-                        <Nav.Link as={Link} to="/usuario">Usuario</Nav.Link>
-                        <Nav.Link as={Link} to="/carrito">Carrito</Nav.Link>
-                        <Nav.Link as={Link} to="/nosotros">Nosotros</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
-    );
+        <header className="banner">
+            <div className="Logo">
+                <Link to="/">
+                    <img src={logo} alt="Logo Pokegamer" />
+                </Link>
+            </div>
 
+            <nav aria-label="Navegación principal">
+                <ul>
+                    <li><Link to="/inicio">Inicio</Link></li>
+                    <li><Link to="/productos">Productos</Link></li>
+                    <li><Link to="/noticias">Noticias</Link></li>
+                    <li><Link to="/comunidad">Centro Pokémon</Link></li>
+                    <li><Link to="/usuario">Usuario</Link></li>
+                    <li><Link to="/carrito">Carrito</Link></li>
+                    <li><Link to="/nosotros">Nosotros</Link></li>
+                </ul>
+            </nav>
+
+            <div className="Espacio-Vacio"></div>
+        </header>
+    );
 }
