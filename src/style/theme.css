@@ -1,0 +1,34 @@
+:root {
+  --darkblue: #06397d;
+  --blue: #82add6;
+  --gray: #e4e9f4;
+  --yellow: #facb66;
+  --saffron: #911f1e;
+  --bg: #ccdde8;
+  --bg2: #a82028;
+  --bg-section: #68c8fc;
+  --bg-section2: #a7e2f9;
+  --bg-producto: #00a6ff;
+  --bg-producto2:#94e1ff;;
+  --bg-header:  #178fd6;
+  --card-color: #dffaff;
+  --gradiente-1: radial-gradient(1200px 800px at 20% -10%, rgba(255, 255, 255, 0.977), transparent);
+  --gradiente-2: radial-gradient(1200px 800px at 120% 10%, rgb(198, 226, 250), transparent);
+  --bg-gradiente: var(--gradiente-1), var(--gradiente-2);
+  --surface: linear-gradient(0deg, rgba(255, 38, 38, 1), rgb(255, 109, 109, 1));
+  --titles: "Orbitron", sans-serif;
+  --text: "Roboto", sans-serif;
+  --textColor: #000000;
+  --textSecondary: #000000;
+  --colorAnchor: #000;
+  --colorAnchorHover: #ff0000;
+  --borderColor: #fff;
+  --radius: 1rem;
+  --shadow: 0.625rem 1rem 10px rgba(32, 32, 32, 0.529);
+  --paddingBlock: clamp(1rem, 2vw, 2rem);
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--textColor);
+}
