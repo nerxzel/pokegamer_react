@@ -27,7 +27,7 @@
   --colorAnchor: #000;
   --colorAnchorHover: #ff0000;
   --borderColor: #fff;
-  --radius: 1rem;
+  --radius: 3rem;
   --shadow: 0.625rem 1rem 10px rgba(32, 32, 32, 0.529);
   --paddingBlock: clamp(1rem, 2vw, 2rem);
 }
@@ -75,7 +75,7 @@ h5 {
 
 a {
   color: var(--colorAnchor);
-  text-decoration: none; /* Bootstrap también quita la decoración por defecto */
+  text-decoration: none;
 }
 
 a:hover {
@@ -106,6 +106,8 @@ a:hover {
   box-shadow: var(--shadow);
 }
 
+/* Para las tarjetas de noticias */
+
 .Noticias-Card {
   background: var(--card-color);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -124,6 +126,8 @@ a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Para las tarjetas de producto */
+
 .Producto-Comprar-Boton {
   color: #fffcf6;
   border: none;
@@ -140,15 +144,45 @@ a:hover {
   background-color: #0d527a;
 }
 
-/* bootstrap no puede hacer esta lesera, veamos como lo hacemos funcionar */
-header nav ul li::before {
+.nav-direction{
+  justify-content: space-evenly;
+}
+
+/* Para los enlaces del nav bar */
+
+.nav-link-boxed {
+  padding: .5rem .75rem;
+  border: 1px solid var(--borderColor);
+  border-radius: var(--radius);
+  background-color: #f8fdfd;
+  color: #000 !important;
+  transition: background .2s, color .2s, border-color .2s;
+  margin: 0.25rem 0.5rem;
+}
+
+.nav-link-boxed:hover {
+  background-color: #ff2626;
+  color: white !important; 
+  border-color: #ff2626;
+}
+
+/* Para las pokebolas del nav bar */
+
+.pokeball-link {
+  position: relative; 
+  padding-left: 2rem !important;
+  margin: 0 0.5rem; 
+  font-weight: bold;
+}
+
+.pokeball-link::before {
   content: "";
   position: absolute;
-  left: 0;
+  left: 0.5rem; 
   top: 50%;
   transform: translateY(-50%);
-  width: 16px;
+  width: 16px; 
   height: 16px;
-  background: url("/img/Poké_Ball_icon.png") no-repeat center/contain;
-  border-radius: 10%;
+  background: url("../assets/Tab-Logo.png") no-repeat center/contain; 
 }
+

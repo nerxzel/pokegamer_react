@@ -5,10 +5,12 @@ import './style/theme.css';
 export default function App() {
   return(
     <>
-      <AppNavbar />
-        <main className="container my-4" role="main">
-        </main>
-      <AppFooter />
+      <div className="d-flex flex-column min-vh-100">
+        <AppNavbar />
+          <main className="container my-4 flex-grow-1" role="main">
+          </main>
+        <AppFooter />
+      </div>
     </>
   );
 
