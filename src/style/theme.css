@@ -130,6 +130,7 @@ a:hover {
 
 .Producto-Box {
   transition: box-shadow 0.4s;
+  border: none;
   width: 18rem;
 }
 
