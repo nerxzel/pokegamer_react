@@ -11,7 +11,7 @@ import Nosotros from '../pages/Nosotros.jsx';
 export default function AppRoutes() {
     return(
         <Routes> 
-            <Route path="/Inicio" element={<Inicio />}/>
+            <Route path="/" element={<Inicio />}/>
             <Route path="/Productos" element={<Productos />}/>
             <Route path="/Noticias" element={<Noticias />}/>
             <Route path="/Comunidad" element={<Comunidad />}/>
