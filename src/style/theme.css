@@ -111,7 +111,7 @@ a:hover {
 .Noticias-Card {
   background: var(--card-color);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  
+  width: 18rem;
 }
 
 .Noticias-Img {
