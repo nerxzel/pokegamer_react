@@ -1,5 +1,5 @@
 import megaDragonite from '../assets/mega-dragonite.png';
-import mecanica from '../assets/mecanica.jpg';
+import mecanica from '../assets/Mecanica.jpg';
 import noticiatcg from '../assets/noticia-tcg.jpg';
 import pokemonGo from '../assets/pokemon-go-2025.png';
 import tamagochi from '../assets/tamagochi.jpg';
