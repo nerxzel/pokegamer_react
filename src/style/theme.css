@@ -1,7 +1,7 @@
 /* ===================================
   VARIABLES
   =================================== */
-
+  
 :root {
   --darkblue: #06397d;
   --blue: #82add6;
@@ -195,4 +195,3 @@ a:hover {
   height: 16px;
   background: url("../assets/Tab-Logo.png") no-repeat center/contain; 
 }
-
