@@ -1,3 +1,12 @@
+import InicioSection from '../components/layout/InicioSection';
+import { mockInicio } from '../utils/mockInicio';
+
 export default function Inicio() {
-    return<h1 className="h3">Inicio</h1>;
+  return (
+    <>
+      {mockInicio.map(section => (
+        <InicioSection key={section.id} section={section} />
+      ))}
+    </>
+  );
 }

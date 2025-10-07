@@ -94,10 +94,14 @@ a:hover {
  CLASES PERSONALIZADAS 
 =================================== */
 
-.seccion {
-  background: linear-gradient(0deg, var(--bg-section), var(--bg-section2));
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+.seccion{
+    margin: clamp(1rem, 2.5vw, 2rem) 0;
+    padding: clamp(1rem, 2vw, 2rem);
+    background: linear-gradient(0deg, var(--bg-section), var(--bg-section2));
+    border-radius: var(--radius); 
+    box-shadow: var(--shadow);
+    width: 100%;
+    /*Crea una caja con estilo para las secciones con color y sombreado*/
 }
 
 .producto {

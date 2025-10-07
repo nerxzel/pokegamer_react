@@ -11,7 +11,7 @@ import Trailer from '../assets/Trailer.jpg';
 import TerminalMontage from '../assets/maxresdefault.jpg';
 import MegaDimension from '../assets/MegaDimension.jpg';
 
-export const noticiasMock = [
+export const mockNoticias = [
     {id: 1, imagen: megaDragonite , titulo: "Se anuncia el primer nuevo Mega", descripcion: "Horrible dragón amarillo destruye los sueños de los niños alrededor del mundo", url: 'https://www.youtube.com/watch?v=fWDx1omjIwM'},
     {id: 2, imagen: mecanica , titulo: "Nintendo patenta una mecánica que puede afectar a muchos juegos", descripcion: "La batalla entre Nintendo y Palworld parece seguir adelante", url: 'https://nintenduo.com/nueva-patente-nintendo-mecanica-invocacion-combate'},
     {id: 3, imagen: noticiatcg , titulo: "El millonario mundo de las cartas Pokemon", descripcion: "En Chile hay unidades que superan los $1,5 millones y hay carpetas cuyo valor alcanzan los $12 millones.", url: 'https://www.emol.com/noticias/Economia/2025/08/13/1174905/pokemon-cartas-negocio-millonario.html'},
