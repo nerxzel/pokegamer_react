@@ -1,7 +1,11 @@
 import { Card, Button } from 'react-bootstrap';
+import { useCart } from '../../hooks/useCart';
 
 
 export default function CardProducto( {producto} ) {
+
+  const { addToCart } = useCart();
+
    
   const formatPrice = (price) => {
     return new Intl.NumberFormat('es-CL', {
@@ -10,6 +14,12 @@ export default function CardProducto( {producto} ) {
     }).format(price);
   };
     
+  const handleAddToCart = () => {
+    addToCart(producto);
+    // Hay que añadir la función para mostrar que se añadió el producto
+    console.log(`${producto.nombre} agregado al carrito!`);
+  };
+
     return (
 
     <Card className='Producto-Box'>
@@ -21,7 +31,7 @@ export default function CardProducto( {producto} ) {
           <Card.Text className='Producto-Precio mb-0'>
             {formatPrice(producto.precio)}
           </Card.Text>
-          <Button variant="primary" className='Producto-Comprar-Boton'>Agregar al carro</Button>
+          <Button variant="primary" className='Producto-Comprar-Boton' onClick={handleAddToCart}>Agregar al carro</Button>
         </div>
       </Card.Body>
     </Card>

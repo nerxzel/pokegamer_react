@@ -1,7 +1,7 @@
 import AppNavbar from "./components/layout/Navbar";
 import AppFooter from "./components/layout/Footer";
-import './style/theme.css';
 import { Container } from "react-bootstrap";
+
 
 export default function App({children}) {
   return(

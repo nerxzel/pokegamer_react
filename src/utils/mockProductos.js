@@ -14,7 +14,7 @@ import scarletViolet from '../assets/scarlet-violet.jpg';
 import thundurusPlush from '../assets/thundurus-plush.jpg';
 import venusaur from '../assets/venusaur.jpg';
 
-export const mockProducts = [
+export const mockProductos = [
     {id: 1, imagen: flotadorLapras , nombre: "Flotador Lapras", precio: 70000, categoria: "accesorios"},
     {id: 2, imagen: lanyardMismagius, nombre: "Mismagius Lanyard", precio: 15000, categoria: "accesorios"},
     {id: 3, imagen: collarDiamantePikachu, nombre: "Collar Pikchu Diamante", precio: 2500000, categoria: "accesorios"},

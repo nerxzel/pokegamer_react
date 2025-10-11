@@ -6,18 +6,22 @@ import Comunidad from '../pages/Comunidad.jsx';
 import Carrito from '../pages/Carrito.jsx';
 import Usuario from '../pages/Usuario.jsx';
 import Nosotros from '../pages/Nosotros.jsx';
+import Perfil from '../pages/Perfil.jsx'; 
+import Checkout from '../pages/Checkout.jsx'
 
 
 export default function AppRoutes() {
     return(
         <Routes> 
             <Route path="/" element={<Inicio />}/>
-            <Route path="/Productos" element={<Productos />}/>
-            <Route path="/Noticias" element={<Noticias />}/>
-            <Route path="/Comunidad" element={<Comunidad />}/>
-            <Route path="/Carrito" element={<Carrito />}/>
-            <Route path="/Usuario" element={<Usuario />}/>
-            <Route path="/Nosotros" element={<Nosotros />}/>
+            <Route path="/productos" element={<Productos />}/>
+            <Route path="/noticias" element={<Noticias />}/>
+            <Route path="/comunidad" element={<Comunidad />}/>
+            <Route path="/carrito" element={<Carrito />}/>
+            <Route path="/usuario" element={<Usuario />}/>
+            <Route path="/nosotros" element={<Nosotros />}/>
+            <Route path="/perfil" element={<Perfil />}/>
+            <Route path="/checkout" element={<Checkout />}/>
         </Routes>
 
     );

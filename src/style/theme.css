@@ -125,10 +125,23 @@ a:hover {
   border-radius: 8px;
 }
 
-.Eventos-Card {
-    background: var(--card-color);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.Eventos-Main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
+
+.Eventos-Card {
+  background: #dffaff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
 
 /* Para las tarjetas de producto */
 
