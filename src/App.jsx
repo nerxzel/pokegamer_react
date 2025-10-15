@@ -1,5 +1,5 @@
-import AppNavbar from "./components/layout/Navbar";
-import AppFooter from "./components/layout/Footer";
+import AppNavbar from "./components/layout/AppNavbar";
+import AppFooter from "./components/layout/AppFooter";
 import { Container } from "react-bootstrap";
 
 
