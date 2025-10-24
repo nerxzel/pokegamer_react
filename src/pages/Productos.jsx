@@ -8,6 +8,19 @@ const categorias = [...new Set(mockProductos.map(p => p.categoria))];
 export default function Productos() {
     const [busqueda, setBusqueda] = useState('');
     const [categoriasSeleccionadas, setCategoriasSeleccionadas] = useState([]);
+    const [productos, setProductos] = useState([]);
+    const [categorias, setCategorias] = useState([]);
+
+    useEffect(() => {
+        const productosGuardados = localStorage.getItem('productos');
+
+        if (!productosGuardados) {
+            localStorage.setItem('productos', JSON.stringify(mockProductos));
+            setProductos(mockProductos);
+        } else {
+            setProductos(JSON.parse(productosGuardados));
+        }
+    }, []);
 
     const handleCategoryChange = (e) => {
         const { value, checked } = e.target;
@@ -18,12 +31,16 @@ export default function Productos() {
 
    
     const productosFiltrados = useMemo(() => {
-        return mockProductos.filter(producto => {
-            const coincideCategoria = categoriasSeleccionadas.length === 0 || categoriasSeleccionadas.includes(producto.categoria);
-            const coincideBusqueda = producto.nombre.toLowerCase().includes(busqueda.toLowerCase());
+        return productos.filter(producto => {
+            const coincideCategoria =
+                categoriasSeleccionadas.length === 0 ||
+                categoriasSeleccionadas.includes(producto.categoria);
+            const coincideBusqueda = producto.nombre
+                .toLowerCase()
+                .includes(busqueda.toLowerCase());
             return coincideCategoria && coincideBusqueda;
         });
-    }, [busqueda, categoriasSeleccionadas]);
+    }, [busqueda, categoriasSeleccionadas, productos]);
 
     return (
         <div>
