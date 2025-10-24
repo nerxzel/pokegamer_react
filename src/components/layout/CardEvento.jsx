@@ -1,18 +1,33 @@
+import { Card } from "react-bootstrap";
+
 export default function CardEvento({ evento }) {
 
-  return (
+    const mapEmbed = (
+        <iframe
+            src={evento.mapSrc}
+            width="100%" 
+            height="250" 
+            allowFullScreen="" 
+            loading="lazy"
+            title={`Ubicación de ${evento.title}`}
+            className="rounded-top"/>
+    );
 
-    <div className="Eventos-Card">
+    return (
+        <Card className="eventos-card-custom h-100 text-center"> 
+            {mapEmbed} 
+            
+            <Card.Body>
 
-      <iframe
-        src={evento.mapSrc}
-        width="100%" height="250" style={{ border: 0 }}
-        allowFullScreen="" loading="lazy">
-      </iframe>
+                <Card.Title as="h3" className="Eventos-Titulo">
+                    {evento.title}
+                </Card.Title>
+                
+                <Card.Text className="Eventos-Desc">
+                    {evento.description}
+                </Card.Text>
 
-      <h3 className="Eventos-Titulo">{evento.title}</h3>
-      
-      <p className="Eventos-Desc">{evento.description}</p>
-    </div>
-  );
+            </Card.Body>
+        </Card>
+    );
 }

@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../hooks/useCart';
 import { useUser } from '../hooks/useUser'
 
+import { Container, Row, Col, Card, ListGroup, Button, Form } from 'react-bootstrap';
+
 export default function Checkout() {
   const { cart, clearCart, total: subtotal } = useCart();
   const { user, isLoggedIn } = useUser();
@@ -27,55 +29,72 @@ export default function Checkout() {
     }, 1500); 
   };
 
-  return (
-    <section className="seccion">
-      <h2>Checkout</h2>
-      <div style={{ maxWidth: '860px', display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+ return (
+        <Container as="section" className="seccion my-5">
+            <h2 className="mb-4">Checkout</h2>
+            
+            <Row className="justify-content-center">
+                <Col lg={8} xl={6}>
+                  
+                    <Card className="checkout-card mb-4">
+                        <Card.Body>
+                            <Card.Title as="h3">Resumen de productos</Card.Title>
+                          
+                            <ListGroup variant="flush" className="bg-transparent">
+                                {cart.map(item => (
+                                    <ListGroup.Item 
+                                        key={item.id} 
+                                        className="d-flex justify-content-between checkout-list-item"
+                                    >
+                                        <span>{item.nombre} x {item.quantity}</span>
+                                        <strong>${(item.precio * item.quantity).toLocaleString()}</strong>
+                                    </ListGroup.Item>
+                                ))}
+                            </ListGroup>
+                            
+                            <hr className="my-3 border-secondary" />
 
-        <div style={{ background: 'rgba(0,0,0,.35)', padding: '1rem', borderRadius: '12px' }}>
-          <h3 style={{ marginTop: 0 }}>Resumen de productos</h3>
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '.6rem' }}>
-            {cart.map(item => (
-              <li key={item.id} style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>{item.nombre} x {item.quantity}</span>
-                <strong>${(item.precio * item.quantity).toLocaleString()}</strong>
-              </li>
-            ))}
-          </ul>
-          <hr style={{ borderColor: 'rgba(255,255,255,.2)', margin: '1rem 0' }} />
-          <div style={{ fontSize: '.9rem' }}>
-            <p>Subtotal: <strong>${subtotal.toLocaleString()}</strong></p>
-            <p>IVA (19%): <strong>${iva.toLocaleString()}</strong></p>
-            <p style={{ fontSize: '1.1rem' }}>Total: <strong>${total.toLocaleString()}</strong></p>
-          </div>
-        </div>
+                            <div className="fs-6">
+                                <p className="mb-1">Subtotal: <strong>${subtotal.toLocaleString()}</strong></p>
+                                <p className="mb-1">IVA (19%): <strong>${iva.toLocaleString()}</strong></p> 
+                                <p className="fs-5 mt-3">Total: <strong>${total.toLocaleString()}</strong></p>
+                            </div>
+                        </Card.Body>
+                    </Card>
 
-        <div style={{ background: 'rgba(0,0,0,.35)', padding: '1rem', borderRadius: '12px' }}>
-          <h3 style={{ marginTop: 0 }}>Datos de envío</h3>
-          {isLoggedIn ? (
-            <div>
-              <p>Nombre: {user.nombre}</p>
-              <p>Email: {user.email}</p>
-              {/* eventualmente se podrían poner más datos del usuario aquí también */}
-            </div>
-          ) : (
-            <form>
-              <p>Completa tus datos para el envío como invitado.</p>
-              <input type="text" placeholder="Nombre completo" className="form-control mb-2" />
-              <input type="email" placeholder="Email de contacto" className="form-control" />
-            </form>
-          )}
-        </div>
+                    <Card className="checkout-card mb-4">
+                        <Card.Body>
+                            <Card.Title as="h3">Datos de envío</Card.Title>
+                            {isLoggedIn ? (
+                                <div>
+                                    <p className="mb-0">Email: {user.email}</p>
+                                </div>
+                            ) : (
+                                <Form>
+                                    <p>Completa tus datos para el envío como invitado.</p>
+                                    <Form.Control type="text" placeholder="Nombre completo" className="mb-2" />
+                                    <Form.Control type="email" placeholder="Email de contacto" />
+                                </Form>
+                            )}
+                        </Card.Body>
+                    </Card>
 
-        <div style={{ display: 'flex', gap: '.6rem' }}>
-          <button onClick={() => navigate('/carrito')} className="Producto-Comprar-Boton" type="button">
-            Volver al carrito
-          </button>
-          <button onClick={handleConfirmPurchase} className="Producto-Comprar-Boton" type="button">
-            Confirmar compra
-          </button>
-        </div>
-      </div>
-    </section>
-  );
+                    <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <Button 
+                            onClick={() => navigate('/carrito')} 
+                            variant="secondary">
+                              Volver al carrito
+                        </Button>
+                      
+                        <Button 
+                            onClick={handleConfirmPurchase} 
+                            className="btn-primary-custom">
+                              Confirmar compra
+                        </Button>
+                    </div>
+
+                </Col>
+            </Row>
+        </Container>
+    );
 }

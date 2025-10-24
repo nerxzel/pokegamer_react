@@ -212,3 +212,67 @@ a:hover {
   height: 16px;
   background: url("../assets/Tab-Logo.png") no-repeat center/contain; 
 }
+
+/* ===================================
+ CLASES PERSONALIZADAS PARA CHECKOUT 
+=================================== */
+
+.checkout-card {
+    /* Imita el estilo de las cards/secciones claras */
+    background-color: var(--card-color) !important; /* #dffaff */
+    border: 1px solid var(--blue);
+    box-shadow: var(--shadow);
+    color: var(--textColor); /* Texto negro */
+}
+
+/* Para los elementos de la lista dentro de la tarjeta */
+.checkout-list-item {
+    background-color: transparent !important;
+    color: var(--textColor) !important;
+    /* Puedes aplicar un borde sutil para las separaciones si lo deseas */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important; 
+}
+/* Estilo para los botones */
+.btn-primary-custom {
+    color: #fffcf6; /* Color de texto del botón original */
+    border: none;
+    background-color: var(--bg-header); /* #178fd6 */
+    /* El resto de estilos se manejan con la clase .btn de Bootstrap */
+}
+.btn-primary-custom:hover {
+    background-color: #0d527a; /* Color de hover similar al .Producto-Comprar-Boton:active */
+    opacity: 0.8;
+    color: #fffcf6;
+}
+
+
+.btn-danger-custom {
+    color: #fffcf6;
+    border: none;
+    background-color: var(--saffron); 
+}
+.btn-danger-custom:hover {
+    background-color: #633; 
+}
+
+/* ===================================
+ CLASES PERSONALIZADAS PARA TOAST
+=================================== */
+
+.custom-toast-bg {
+    background-color: var(--blue) !important; /* Usamos tu variable --blue */
+    border-color: var(--darkblue) !important; /* Un borde sutil de tu color oscuro */
+    color: white !important; /* Asegura que el texto sea blanco sobre el fondo azul */
+}
+
+.custom-toast-header {
+    background-color: var(--blue) !important; /* Fondo más oscuro para el header */
+    color: white !important; /* Texto blanco en el header */
+    border-bottom: 1px solid var(--blue) !important;
+}
+
+.custom-toast-header .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%); /* Hace la X de cerrar blanca */
+}
+
+/* Puedes ajustar los colores según tu preferencia entre --blue, --darkblue, --bg-header */

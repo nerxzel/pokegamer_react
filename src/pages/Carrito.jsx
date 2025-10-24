@@ -31,7 +31,7 @@ export default function Carrito() {
           <div className="mt-4">
             <h4>Total a Pagar: ${total.toLocaleString()}</h4>
             <div className="d-flex gap-2 mt-3">
-              <button className="Producto-Comprar-Boton" onClick={clearCart}>
+              <button className="btn-danger-custom" onClick={clearCart}>
                 Vaciar Carrito
               </button>
               <button className="Producto-Comprar-Boton" onClick={() => navigate('/checkout')}>

@@ -1,5 +1,3 @@
-// src/hooks/useLocalStorage.js
-
 import { useEffect, useState } from 'react';
 
 export const useLocalStorage = (key, initialValue) => {
