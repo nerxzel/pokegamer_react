@@ -8,12 +8,11 @@ import { faFacebookF, faTwitter, faInstagram, faYoutube, faWhatsapp } from '@for
 export default function AppFooter() {
   return (
    
-    <footer className="bg-primary text-light py-4"> {/*bg-primary es un color de fondo, text-light color de texto, py-4 para dar un padding de 4*/}
+    <footer className="bg-primary text-light py-4">
       
       <Container fluid>
         
         <Row className="gy-4"> 
-        {/*los breaker lg, md y xs se están utilizando para hacer la página responsiva*/}
           <Col lg={3} md={6} xs={12} className="d-flex flex-column align-items-center align-items-md-start">
             <img src={Logo} alt="Logo Pokémon" style={{ width: '80px', marginBottom: '0.5rem' }} />
             <p>¡Atrápalos a todos!</p>

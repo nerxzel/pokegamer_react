@@ -1,8 +1,8 @@
-import AppNavbar from "./components/layout/Navbar";
-import AppFooter from "./components/layout/Footer";
-import AppRoutes from "./routes/AppRoutes";
-import './style/theme.css';
+import AppNavbar from "./components/layout/AppNavbar";
+import AppFooter from "./components/layout/AppFooter";
 import { Container } from "react-bootstrap";
+import { Outlet } from "react-router-dom";
+
 
 export default function App() {
   return(
@@ -11,7 +11,7 @@ export default function App() {
         <AppNavbar />
           <main className="flex-grow-1 py-4">
             <Container className="bg-white rounded-4 p-4 shadow-sm h-100">
-              <AppRoutes />
+              < Outlet/>
             </Container>
           </main>
         <AppFooter />
