@@ -14,11 +14,16 @@ export default function Productos() {
     useEffect(() => {
         const productosGuardados = localStorage.getItem('productos');
 
-        if (!productosGuardados) {
+        if (productosGuardados) {
+            // Load from localStorage
+            const parsed = JSON.parse(productosGuardados);
+            setProductos(parsed);
+            setCategorias([...new Set(parsed.map(p => p.categoria))]);
+        } else {
+            // Initialize localStorage with mock data
             localStorage.setItem('productos', JSON.stringify(mockProductos));
             setProductos(mockProductos);
-        } else {
-            setProductos(JSON.parse(productosGuardados));
+            setCategorias([...new Set(mockProductos.map(p => p.categoria))]);
         }
     }, []);
 
