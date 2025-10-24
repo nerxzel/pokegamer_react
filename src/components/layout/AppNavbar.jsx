@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import Logo from '../../assets/Logo.png';
 import { Container, Navbar, Nav} from "react-bootstrap";
+import { useUser } from '../../hooks/useUser';
+
+
 
 export default function AppNavbar() {
+    const { isAdmin } = useUser();
     return (
         <Navbar bg="primary" variant="dark" expand="lg" sticky="top">
 
@@ -22,6 +26,13 @@ export default function AppNavbar() {
                     <Nav.Link as={Link} to="/usuario" className="pokeball-link nav-link-boxed">Usuario</Nav.Link>
                     <Nav.Link as={Link} to="/carrito" className="pokeball-link nav-link-boxed">Carrito</Nav.Link>
                     <Nav.Link as={Link} to="/nosotros" className="pokeball-link nav-link-boxed">Nosotros</Nav.Link>
+
+                    {isAdmin() && (
+                        <Nav.Link as={Link} to="/admin" className="pokeball-link nav-link-boxed admin-link">
+                            Panel Admin
+                        </Nav.Link>
+                    )}
+
                 </Nav>
             </Navbar.Collapse>
         </Container>

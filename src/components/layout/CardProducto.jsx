@@ -33,11 +33,9 @@ export default function CardProducto( {producto} ) {
                             {formatPrice(producto.precio)}
                         </Card.Text>
                         <Button 
-                            // Mantén tu clase Producto-Comprar-Boton si tiene estilos específicos
-                            // o usa una clase personalizada como btn-primary-custom
                             className='Producto-Comprar-Boton' 
                             onClick={handleAddToCart}
-                            variant="primary" // Puedes seguir usando variant para el base styling
+                            variant="primary"
                         >
                             Agregar al carro
                         </Button>
@@ -51,15 +49,12 @@ export default function CardProducto( {producto} ) {
                     show={showToast} 
                     delay={3000} 
                     autohide
-                    // Aplica la clase personalizada para el fondo del Toast
                     className="custom-toast-bg" 
                 >
-                    {/* Aplica la clase personalizada para el header del Toast */}
                     <Toast.Header className="custom-toast-header">
                         <strong className="me-auto">🛒 Carrito</strong>
-                        <small className="text-white">Justo ahora</small> {/* Asegura el color del texto */}
+                        <small className="text-white">Justo ahora</small> 
                     </Toast.Header>
-                    {/* El Toast.Body tomará el color de texto de .custom-toast-bg */}
                     <Toast.Body>
                         ¡{producto.nombre} añadido correctamente!
                     </Toast.Body>

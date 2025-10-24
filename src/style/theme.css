@@ -110,7 +110,7 @@ a:hover {
   box-shadow: var(--shadow);
 }
 
-/* Para las tarjetas de noticias */
+
 
 .Noticias-Card {
   background: var(--card-color);
@@ -142,9 +142,6 @@ a:hover {
   flex-direction: column;
 }
 
-
-/* Para las tarjetas de producto */
-
 .Producto-Box {
   transition: box-shadow 0.4s;
   border: none;
@@ -175,7 +172,6 @@ a:hover {
   justify-content: space-evenly;
 }
 
-/* Para los enlaces del nav bar */
 
 .nav-link-boxed {
   padding: .5rem .75rem;
@@ -193,7 +189,6 @@ a:hover {
   border-color: #ff2626;
 }
 
-/* Para las pokebolas del nav bar */
 
 .pokeball-link {
   position: relative; 
@@ -213,34 +208,30 @@ a:hover {
   background: url("../assets/Tab-Logo.png") no-repeat center/contain; 
 }
 
-/* ===================================
- CLASES PERSONALIZADAS PARA CHECKOUT 
-=================================== */
 
 .checkout-card {
-    /* Imita el estilo de las cards/secciones claras */
-    background-color: var(--card-color) !important; /* #dffaff */
+   
+    background-color: var(--card-color) !important; 
     border: 1px solid var(--blue);
     box-shadow: var(--shadow);
-    color: var(--textColor); /* Texto negro */
+    color: var(--textColor); 
 }
 
-/* Para los elementos de la lista dentro de la tarjeta */
+
 .checkout-list-item {
     background-color: transparent !important;
     color: var(--textColor) !important;
-    /* Puedes aplicar un borde sutil para las separaciones si lo deseas */
+   
     border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important; 
 }
-/* Estilo para los botones */
+
 .btn-primary-custom {
-    color: #fffcf6; /* Color de texto del botón original */
+    color: #fffcf6; 
     border: none;
-    background-color: var(--bg-header); /* #178fd6 */
-    /* El resto de estilos se manejan con la clase .btn de Bootstrap */
+    background-color: var(--bg-header); 
 }
 .btn-primary-custom:hover {
-    background-color: #0d527a; /* Color de hover similar al .Producto-Comprar-Boton:active */
+    background-color: #0d527a; 
     opacity: 0.8;
     color: #fffcf6;
 }
@@ -255,24 +246,19 @@ a:hover {
     background-color: #633; 
 }
 
-/* ===================================
- CLASES PERSONALIZADAS PARA TOAST
-=================================== */
-
 .custom-toast-bg {
-    background-color: var(--blue) !important; /* Usamos tu variable --blue */
-    border-color: var(--darkblue) !important; /* Un borde sutil de tu color oscuro */
-    color: white !important; /* Asegura que el texto sea blanco sobre el fondo azul */
+    background-color: var(--blue) !important; 
+    border-color: var(--darkblue) !important; 
+    color: white !important; 
 }
 
 .custom-toast-header {
-    background-color: var(--blue) !important; /* Fondo más oscuro para el header */
-    color: white !important; /* Texto blanco en el header */
+    background-color: var(--blue) !important; 
+    color: white !important; 
     border-bottom: 1px solid var(--blue) !important;
 }
 
 .custom-toast-header .btn-close {
-    filter: invert(1) grayscale(100%) brightness(200%); /* Hace la X de cerrar blanca */
+    filter: invert(1) grayscale(100%) brightness(200%);
 }
 
-/* Puedes ajustar los colores según tu preferencia entre --blue, --darkblue, --bg-header */
