@@ -12,7 +12,7 @@ const isLoggedIn = !!user;
 const login = async (email, password) => {
     try {
       const response = await api.post('/auth/login', { email, password });
-      const { user: userData, token } = response.data.data;      
+      const { user: userData, token } = response.data;      
       setUser({ ...userData, token });
 
       return { success: true, user: userData };
@@ -27,7 +27,7 @@ const login = async (email, password) => {
 
     try {
       const response = await  api.post('/auth/register', { name, email, password })
-      const { user: userData, token } = response.data.data;
+      const { user: userData, token } = response.data;
       setUser({ ...userData, token });
         return { success: true, user: userData };
     } catch (error) {

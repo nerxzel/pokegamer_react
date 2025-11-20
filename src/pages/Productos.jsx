@@ -1,11 +1,14 @@
-import { useState, useMemo } from 'react';
-import { Form, Row, Col } from 'react-bootstrap';
+import { useState, useMemo, useEffect} from 'react';
+import { Form, Row, Col, Spinner } from 'react-bootstrap';
 import CardProducto from '../components/layout/CardProducto';
-import { mockProductos } from '../utils/mockProductos';
-
-const categorias = [...new Set(mockProductos.map(p => p.categoria))];
+import api from '../api/axiosConfig';
 
 export default function Productos() {
+
+    const [productos, setProductos] = useState([]);
+    const [categorias, setCategorias] = useState([]);
+    const [cargando, setCargando] = useState(true);
+    const [error, setError] = useState(null);
     const [busqueda, setBusqueda] = useState('');
     const [categoriasSeleccionadas, setCategoriasSeleccionadas] = useState([]);
 
@@ -16,14 +19,56 @@ export default function Productos() {
         );
     };
 
-   
+
+    useEffect(() => {
+    const cargarDatos = async () => {
+        try {
+            setCargando(true);
+        
+
+            const [resProductos, resCategorias] = await Promise.all([
+                api.get('/products'),
+                api.get('/products/categories')
+            ]);
+
+        setProductos(resProductos.data.products);
+        
+        setCategorias(resCategorias.data);
+
+        } catch (err) {
+            console.error("Error cargando productos:", err);
+            setError("No se pudieron cargar los productos.");
+        } finally {
+            setCargando(false);
+        }
+    };
+
+    cargarDatos();
+  }, []);
+
     const productosFiltrados = useMemo(() => {
-        return mockProductos.filter(producto => {
-            const coincideCategoria = categoriasSeleccionadas.length === 0 || categoriasSeleccionadas.includes(producto.categoria);
-            const coincideBusqueda = producto.nombre.toLowerCase().includes(busqueda.toLowerCase());
+        return productos.filter(producto => {
+            const coincideCategoria = categoriasSeleccionadas.length === 0 || categoriasSeleccionadas.includes(producto.category);
+            const coincideBusqueda = producto.name.toLowerCase().includes(busqueda.toLowerCase());
             return coincideCategoria && coincideBusqueda;
         });
-    }, [busqueda, categoriasSeleccionadas]);
+    }, [busqueda, categoriasSeleccionadas, productos]);
+
+    if (cargando) {
+        return (
+            <div className="d-flex justify-content-center py-5">
+                <Spinner animation="border" variant="primary" />
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <Container className="py-4">
+                <Alert variant="danger">{error}</Alert>
+            </Container>
+        );
+    }
 
     return (
         <div>
@@ -58,7 +103,7 @@ export default function Productos() {
             <Row xs={1} sm={2} md={3} lg={4} className="g-4 justify-content-center">
                 {productosFiltrados.length > 0 ? (
                     productosFiltrados.map(producto => (
-                        <Col key={producto.id} className="d-flex justify-content-center">
+                        <Col key={producto._id} className="d-flex justify-content-center">
                             <CardProducto producto={producto} />
                         </Col>
                     ))
