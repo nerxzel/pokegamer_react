@@ -35,11 +35,9 @@ export default function Checkout() {
             
             <Row className="justify-content-center">
                 <Col lg={8} xl={6}>
-                  
                     <Card className="checkout-card mb-4">
                         <Card.Body>
                             <Card.Title as="h3">Resumen de productos</Card.Title>
-                          
                             <ListGroup variant="flush" className="bg-transparent">
                                 {cart.map(item => (
                                     <ListGroup.Item 
@@ -83,13 +81,13 @@ export default function Checkout() {
                         <Button 
                             onClick={() => navigate('/carrito')} 
                             variant="secondary">
-                              Volver al carrito
+                                Volver al carrito
                         </Button>
-                      
+
                         <Button 
                             onClick={handleConfirmPurchase} 
                             className="btn-primary-custom">
-                              Confirmar compra
+                                Confirmar compra
                         </Button>
                     </div>
 

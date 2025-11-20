@@ -18,7 +18,7 @@ export default function Usuario() {
 
 return (
     <section className="seccion">
-     
+
       {isLoggedIn ? (
         <div className="text-center my-5">Redirigiendo a tu perfil...</div>
       ) : showRegister ? (

@@ -5,25 +5,25 @@ import { Container, Card, ListGroup, Button, Row, Col } from 'react-bootstrap';
 
 export default function Perfil() {
 
-  const { user, isLoggedIn, logout } = useUser();
-  const navigate = useNavigate();
+    const { user, isLoggedIn, logout } = useUser();
+    const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      navigate('/usuario');
+    useEffect(() => {
+        if (!isLoggedIn) {
+            navigate('/usuario');
+        }
+    }, [isLoggedIn, navigate]);
+
+    const handleLogout = () => {
+        logout();
+        navigate('/');
+    };
+
+    if (!user) {
+        return null; 
     }
-  }, [isLoggedIn, navigate]);
 
-   const handleLogout = () => {
-    logout();
-    navigate('/');
-  };
-  
-  if (!user) {
-    return null; 
-  }
-
-  return (
+return (
         <Container as="section" id="info-entrenador" className="seccion my-5">
             <h2 className="mb-4">Bienvenido, {user?.email}</h2>
             
@@ -37,6 +37,7 @@ export default function Perfil() {
                         
                             <ListGroup variant="flush" className="bg-transparent">
                                 <ListGroup.Item className="d-flex justify-content-between checkout-list-item">
+                                    <strong>Nombre:</strong> {user?.name || '-'}
                                     <strong>Email:</strong> {user?.email || '-'}
                                 </ListGroup.Item>        
                             </ListGroup>
@@ -48,7 +49,7 @@ export default function Perfil() {
                             onClick={handleLogout} 
                             className="btn-primary-custom" 
                             size="lg">
-                              Cerrar Sesión
+                                Cerrar Sesión
                         </Button>
                     </div>
 

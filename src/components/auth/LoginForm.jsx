@@ -4,40 +4,37 @@ import { useUser } from '../../hooks/useUser';
 import { Container, Row, Col, Form, Button, Spinner } from 'react-bootstrap';
 
 export default function LoginForm({ onShowRegister }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [serverError, setServerError] = useState('');
-  const [loading, setLoading] = useState(false);
-  
-  const navigate = useNavigate();
-  const { login } = useUser(); 
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [serverError, setServerError] = useState('');
+    const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setServerError('');
-    setLoading(true);
+    const navigate = useNavigate();
+    const { login } = useUser(); 
 
-    if (!email || !password) {
-        setServerError('Por favor, ingresa correo y contraseña.');
-        setLoading(false);
-        return;
-    }
+    const handleSubmit = async (e) => {
 
-    try {
-      await login(email, password); 
-      
-      navigate('/perfil'); 
+        e.preventDefault();
+        setServerError('');
+        setLoading(true);
 
-    } catch (error) {
+        if (!email || !password) {
+            setServerError('Por favor, ingresa correo y contraseña.');
+            setLoading(false);
+            return;
+        }
 
-      setServerError(error.message || "Ocurrió un error al iniciar sesión.");
-    } finally {
+        try {
+            await login(email, password); 
+            navigate('/perfil'); 
+        } catch (error) {
+            setServerError(error.message || "Ocurrió un error al iniciar sesión.");
+        } finally {
+            setLoading(false);
+        }
+    };
 
-      setLoading(false);
-    }
-  };
-
-  return (
+return (
     <Container className="my-5">
         <Row className="justify-content-center">
             <Col xs={12} sm={10} md={8} lg={6} xl={4}> 
@@ -67,7 +64,6 @@ export default function LoginForm({ onShowRegister }) {
                         />
                     </Form.Group>
                     
-                 
                     <div className="text-danger fw-bold" style={{ minHeight: '1.2em' }}>
                         {serverError}
                     </div>
@@ -77,21 +73,18 @@ export default function LoginForm({ onShowRegister }) {
                             className="btn-primary-custom"
                             type="submit"
                             disabled={loading}>
-                       
                             {loading ? (
                                 <><Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" /><span className="ms-2">Ingresando...</span></>
                             ) : (
                                 'Iniciar Sesión'
                             )}
                         </Button>
-                      
-                  
                         <Button
                             type="button"
                             className="btn-secondary-custom"
                             onClick={onShowRegister}
                             disabled={loading}>
-                              Registrarme
+                                Registrarme
                         </Button>
                     </div>
                     
@@ -99,5 +92,5 @@ export default function LoginForm({ onShowRegister }) {
             </Col>
         </Row>
     </Container>
-  );
+    );
 }
