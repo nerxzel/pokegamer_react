@@ -8,7 +8,7 @@ const RutaProtegida = ({ allowedRole = null }) => {
         return <Navigate to="/usuario" replace />;
     }
 
-    if (allowedRole === 'ADMIN') {
+    if (allowedRole === 'admin') {
         if (isAdmin()) {
 
             return <Outlet />;

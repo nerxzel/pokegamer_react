@@ -11,9 +11,9 @@ export const useUser = () => {
 
   const getUserRole = () => user?.role || null;
   
-  const isAdmin = () => isLoggedIn && user?.role === 'ADMIN';
+  const isAdmin = () => isLoggedIn && user?.role === 'admin';
 
-  const isUser = () => isLoggedIn && user?.role === 'USER';
+  const isUser = () => isLoggedIn && user?.role === 'customer';
   
   return {
     user,

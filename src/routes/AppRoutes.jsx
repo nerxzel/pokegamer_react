@@ -27,7 +27,7 @@ export default function AppRoutes() {
                 <Route path="checkout" element={<Checkout />} />
                 <Route path="usuario" element={<Usuario />} />
                 
-            <Route element={<RutaProtegida allowedRole="ADMIN" />}>
+            <Route element={<RutaProtegida allowedRole="admin" />}>
                 <Route path="admin" element={<AdminPanel />} />
             </Route>                 
             </Route>

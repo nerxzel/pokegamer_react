@@ -1,67 +1,39 @@
 import { createContext, useMemo } from 'react';
-import { useLocalStorage } from '../hooks/useLocalStorage'; 
+import { useLocalStorage } from '../hooks/useLocalStorage';
+import api from '../api/axiosConfig';
 
 const UserContext = createContext();
 
-const INITIAL_MOCK_USERS = [
-{ id: 1, email: "comprador1@tienda.com", password: "password123", nombre: "Comprador Mock", role: "USER" },
-{ id: 2, email: "test@tienda.com", password: "securepassword", nombre: "Test User", role: "ADMIN"},
-];
-
 export const UserProvider = ({ children }) => {
 const [user, setUser] = useLocalStorage('currentUser', null);
-const [mockUsers, setMockUsers] = useLocalStorage('mockRegisteredUsers', INITIAL_MOCK_USERS);
 
 const isLoggedIn = !!user;
 
 const login = async (email, password) => {
-    await new Promise(resolve => setTimeout(resolve, 1000)); 
+    try {
+      const response = await api.post('/auth/login', { email, password });
+      const { user: userData, token } = response.data.data;      
+      setUser({ ...userData, token });
 
-    const foundUser = mockUsers.find(
-      u => u.email === email && u.password === password
-    );
-
-    if (foundUser) {
-      const userData = { 
-          id: foundUser.id, 
-          email: foundUser.email, 
-          nombre: foundUser.nombre, 
-          role: foundUser.role 
-      };
-      setUser(userData);
       return { success: true, user: userData };
-    } else {
-      throw new Error("Credenciales inválidas");
+
+    } catch (error) {
+      const msg = error.response?.data?.message || "Error al conectar con el servidor";
+      throw new Error(msg);
     }
   };
 
-  const register = async (nombre, email, password) => {
-    await new Promise(resolve => setTimeout(resolve, 1000));
+  const register = async (name, email, password) => {
 
-    const exists = mockUsers.some(u => u.email === email);
-    if (exists) {
-      throw new Error("El correo electrónico ya está registrado.");
+    try {
+      const response = await  api.post('/auth/register', { name, email, password })
+      const { user: userData, token } = response.data.data;
+      setUser({ ...userData, token });
+        return { success: true, user: userData };
+    } catch (error) {
+      const msg = error.response?.data?.message || "Error en el registro";
+      throw new Error(msg);
     }
-
-    const newUser = {
-      id: Date.now(), 
-      nombre,
-      email,
-      password, 
-      role: "USER" 
-    };
-
-    setMockUsers(prevUsers => [...prevUsers, newUser]);
-
-    const userData = { 
-      id: newUser.id, 
-      email: newUser.email, 
-      nombre: newUser.nombre, 
-      role: newUser.role 
-    };
-    setUser(userData); 
-
-    return { success: true, user: userData };
   };
 
   const logout = () => {
@@ -81,7 +53,7 @@ const login = async (email, password) => {
     updateUser,
   }), [user, isLoggedIn]); 
 
-  return (
+return (
     <UserContext.Provider value={value}>
       {children}
     </UserContext.Provider>

@@ -4,7 +4,7 @@ import { useUser } from '../../hooks/useUser';
 import { Container, Row, Col, Form, Button, Spinner } from 'react-bootstrap';
 
 export default function RegistroForm({ onCancel }) {
-  const [nombre, setNombre] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [serverError, setServerError] = useState('');
@@ -18,7 +18,7 @@ export default function RegistroForm({ onCancel }) {
     setServerError('');
     setLoading(true);
 
-    if (!nombre || !email || !password) {
+    if (!name || !email || !password) {
         setServerError('Todos los campos son obligatorios.');
         setLoading(false);
         return;
@@ -26,7 +26,7 @@ export default function RegistroForm({ onCancel }) {
 
     try {
 
-      await register(nombre, email, password); 
+      await register(name, email, password); 
       
       navigate('/perfil'); 
 
@@ -46,7 +46,7 @@ export default function RegistroForm({ onCancel }) {
                     
                     <Form.Group controlId="name">
                         <Form.Label>Nombre completo:</Form.Label>
-                        <Form.Control type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} required disabled={loading} />
+                        <Form.Control type="text" value={name} onChange={(e) => setName(e.target.value)} required disabled={loading} />
                     </Form.Group>
 
                     <Form.Group controlId="email">
