@@ -1,13 +1,14 @@
-import { useState, useMemo, useEffect} from 'react';
-import { Form, Row, Col, Spinner } from 'react-bootstrap';
+import { useState, useMemo, useEffect } from 'react';
+import { Form, Row, Col, Spinner, Container, Alert } from 'react-bootstrap';
 import CardProducto from '../components/layout/CardProducto';
 import api from '../api/axiosConfig';
+import { getErrorMessage } from '../utils/errorHandler';
 
 export default function Productos() {
 
     const [productos, setProductos] = useState([]);
     const [categorias, setCategorias] = useState([]);
-    const [cargando, setCargando] = useState(true);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [busqueda, setBusqueda] = useState('');
     const [categoriasSeleccionadas, setCategoriasSeleccionadas] = useState([]);
@@ -21,29 +22,29 @@ export default function Productos() {
 
 
     useEffect(() => {
-    const cargarDatos = async () => {
-        try {
-            setCargando(true);
-        
+        const cargarDatos = async () => {
+            try {
+                setLoading(true);
 
-            const [resProductos, resCategorias] = await Promise.all([
-                api.get('/products'),
-                api.get('/products/categories')
-            ]);
 
-        setProductos(resProductos.data.products);
-        
-        setCategorias(resCategorias.data);
+                const [resProductos, resCategorias] = await Promise.all([
+                    api.get('/products'),
+                    api.get('/products/categories')
+                ]);
 
-        } catch (err) {
-            console.error("Error cargando productos:", err);
-            setError("No se pudieron cargar los productos.");
-        } finally {
-            setCargando(false);
-        }
-    };
+                setProductos(resProductos.data.products);
 
-    cargarDatos();
+                setCategorias(resCategorias.data);
+
+            } catch (err) {
+                console.error("Error cargando productos:", err);
+                setError(getErrorMessage(err));
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        cargarDatos();
     }, []);
 
     const productosFiltrados = useMemo(() => {
@@ -54,7 +55,7 @@ export default function Productos() {
         });
     }, [busqueda, categoriasSeleccionadas, productos]);
 
-    if (cargando) {
+    if (loading) {
         return (
             <div className="d-flex justify-content-center py-5">
                 <Spinner animation="border" variant="primary" />
@@ -72,7 +73,7 @@ export default function Productos() {
 
     return (
         <div>
-            
+
             <div className="seccion p-4 mb-5">
                 <Row>
                     <Col md={12} className="mb-3">
