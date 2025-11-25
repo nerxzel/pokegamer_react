@@ -44,7 +44,7 @@ export default function Productos() {
     };
 
     cargarDatos();
-  }, []);
+    }, []);
 
     const productosFiltrados = useMemo(() => {
         return productos.filter(producto => {
@@ -102,9 +102,9 @@ export default function Productos() {
 
             <Row xs={1} sm={2} md={3} lg={4} className="g-4 justify-content-center">
                 {productosFiltrados.length > 0 ? (
-                    productosFiltrados.map(producto => (
-                        <Col key={producto._id} className="d-flex justify-content-center">
-                            <CardProducto producto={producto} />
+                    productosFiltrados.map(product => (
+                        <Col key={product._id} className="d-flex justify-content-center">
+                            <CardProducto product={product} />
                         </Col>
                     ))
                 ) : (
