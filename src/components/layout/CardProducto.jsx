@@ -3,7 +3,7 @@ import { useCart } from '../../hooks/useCart';
 import { useState } from 'react';
 
 
-export default function CardProducto( {producto} ) {
+export default function CardProducto( {product} ) {
 
     const { addToCart } = useCart();
     const [ showToast, setShowToast ] = useState(false)
@@ -16,7 +16,7 @@ export default function CardProducto( {producto} ) {
     };
     
     const handleAddToCart = () => {
-        addToCart(producto);
+        addToCart(product);
         setShowToast(true)
         setTimeout(() => setShowToast(false), 3000)
     };
@@ -25,12 +25,12 @@ export default function CardProducto( {producto} ) {
         <>
             <Card className='Producto-Box'>
                 
-                <Card.Img variant="top" src={producto.imagen}/>
+                <Card.Img variant="top" src={product.imagen}/>
                 <Card.Body className="d-flex flex-column">
-                    <Card.Title className='text-center'>{producto.name}</Card.Title>
+                    <Card.Title className='text-center'>{product.name}</Card.Title>
                     <div className="mt-auto d-flex justify-content-between align-items-center">
                         <Card.Text className='Producto-Precio mb-0'>
-                            {formatPrice(producto.price)}
+                            {formatPrice(product.price)}
                         </Card.Text>
                         <Button 
                             className='Producto-Comprar-Boton' 
@@ -56,7 +56,7 @@ export default function CardProducto( {producto} ) {
                         <small className="text-white">Justo ahora</small> 
                     </Toast.Header>
                     <Toast.Body>
-                        ¡{producto.name} añadido correctamente!
+                        ¡{product.name} añadido correctamente!
                     </Toast.Body>
                 </Toast>
             </ToastContainer>
