@@ -1,95 +1,94 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../hooks/useCart';
-import { useUser } from '../hooks/useUser'
-import { Container, Row, Col, Card, ListGroup, Button, Form } from 'react-bootstrap';
+import { useUser } from '../hooks/useUser';
+import { Container, Row, Col, Card, ListGroup, Button, Alert } from 'react-bootstrap';
 
 export default function Checkout() {
-    const { cart, clearCart, total: subtotal } = useCart();
-    const { user, isLoggedIn } = useUser();
+    const { cart, submitOrder, total: subtotal, cargando } = useCart(); 
+    const { isLoggedIn } = useUser();
     const navigate = useNavigate();
+    const [errorMsg, setErrorMsg] = useState(''); 
 
     useEffect(() => {
         if (cart.length === 0) {
-        alert("No hay productos en el carrito para finalizar la compra.");
-        navigate('/carrito');
+            navigate('/productos');
         }
     }, [cart, navigate]);
 
     const iva = subtotal * 0.19;
     const total = subtotal + iva;
 
-    const handleConfirmPurchase = () => {
+    const handleConfirmPurchase = async () => {
+        setErrorMsg(''); 
 
-        alert('¡Compra confirmada con éxito! Redirigiendo...');
-        clearCart();
-        setTimeout(() => {
-            navigate(isLoggedIn ? '/perfil' : '/');
-        }, 1500); 
+        if (!isLoggedIn) {
+            navigate('/login');
+            return;
+        }
+
+        try {
+            await submitOrder();
+            
+            alert('¡Compra exitosa! Tu pedido ha sido procesado.');
+            navigate('/perfil'); 
+        } catch (error) {
+            setErrorMsg(error.message);
+        }
     };
 
- return (
-        <Container as="section" className="seccion my-5">
-            <h2 className="mb-4">Checkout</h2>
+    return (
+        <Container className="my-5">
+            <h2 className="mb-4">Resumen de Pedido</h2>
             
-            <Row className="justify-content-center">
-                <Col lg={8} xl={6}>
-                    <Card className="checkout-card mb-4">
-                        <Card.Body>
-                            <Card.Title as="h3">Resumen de productos</Card.Title>
-                            <ListGroup variant="flush" className="bg-transparent">
-                                {cart.map(item => -(
-                                    <ListGroup.Item 
-                                        key={item._id} 
-                                        className="d-flex justify-content-between checkout-list-item"
-                                    >
-                                        <span>{item.name} x {item.quantity}</span>
-                                        <strong>${(item.price * item.quantity).toLocaleString()}</strong>
+            {/* Mostramos errores de backend aquí (ej: Stock insuficiente) */}
+            {errorMsg && <Alert variant="danger">{errorMsg}</Alert>}
+
+            <Row>
+                <Col md={8}>
+                    <Card className="mb-4">
+                        <Card.Header>Productos</Card.Header>
+                        <ListGroup variant="flush">
+                            {cart.map((item, index) => {
+                                const product = item.productId || item;
+                                if (!product) return null;
+                                return (
+                                    <ListGroup.Item key={index} className="d-flex justify-content-between">
+                                        <span>{product.name} (x{item.quantity})</span>
+                                        <span>${(product.price * item.quantity).toLocaleString()}</span>
                                     </ListGroup.Item>
-                                ))}
-                            </ListGroup>
-                            
-                            <hr className="my-3 border-secondary" />
-
-                            <div className="fs-6">
-                                <p className="mb-1">Subtotal: <strong>${subtotal.toLocaleString()}</strong></p>
-                                <p className="mb-1">IVA (19%): <strong>${iva.toLocaleString()}</strong></p> 
-                                <p className="fs-5 mt-3">Total: <strong>${total.toLocaleString()}</strong></p>
-                            </div>
-                        </Card.Body>
+                                );
+                            })}
+                        </ListGroup>
                     </Card>
-
-                    <Card className="checkout-card mb-4">
+                </Col>
+                <Col md={4}>
+                    <Card>
                         <Card.Body>
-                            <Card.Title as="h3">Datos de envío</Card.Title>
-                            {isLoggedIn ? (
-                                <div>
-                                    <p className="mb-0">Email: {user.email}</p>
-                                </div>
-                            ) : (
-                                <Form>
-                                    <p>Completa tus datos para el envío como invitado.</p>
-                                    <Form.Control type="text" placeholder="Nombre completo" className="mb-2" />
-                                    <Form.Control type="email" placeholder="Email de contacto" />
-                                </Form>
-                            )}
+                            <Card.Title>Total a Pagar</Card.Title>
+                            <hr />
+                            <div className="d-flex justify-content-between mb-2">
+                                <span>Subtotal:</span>
+                                <span>${subtotal.toLocaleString()}</span>
+                            </div>
+                            <div className="d-flex justify-content-between mb-3">
+                                <span>IVA (19%):</span>
+                                <span>${iva.toLocaleString()}</span>
+                            </div>
+                            <h3 className="text-center text-primary">
+                                ${total.toLocaleString()}
+                            </h3>
+                            
+                            <Button 
+                                className="w-100 mt-3 btn-primary-custom" 
+                                size="lg"
+                                onClick={handleConfirmPurchase}
+                                disabled={cargando} 
+                            >
+                                {cargando ? 'Procesando...' : 'Confirmar Pago'}
+                            </Button>
                         </Card.Body>
                     </Card>
-
-                    <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <Button 
-                            onClick={() => navigate('/carrito')} 
-                            variant="secondary">
-                                Volver al carrito
-                        </Button>
-
-                        <Button 
-                            onClick={handleConfirmPurchase} 
-                            className="btn-primary-custom">
-                                Confirmar compra
-                        </Button>
-                    </div>
-
                 </Col>
             </Row>
         </Container>
