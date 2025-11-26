@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../hooks/useCart';
 import { useUser } from '../hooks/useUser';
 import { Container, Row, Col, Card, ListGroup, Button, Alert } from 'react-bootstrap';
+import { getErrorMessage } from '../utils/errorHandler';
 
 export default function Checkout() {
-    const { cart, submitOrder, total: subtotal, cargando } = useCart(); 
+    const { cart, submitOrder, total: subtotal, loading } = useCart();
     const { isLoggedIn } = useUser();
     const navigate = useNavigate();
-    const [errorMsg, setErrorMsg] = useState(''); 
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         if (cart.length === 0) {
@@ -20,7 +21,7 @@ export default function Checkout() {
     const total = subtotal + iva;
 
     const handleConfirmPurchase = async () => {
-        setErrorMsg(''); 
+        setError(null);
 
         if (!isLoggedIn) {
             navigate('/login');
@@ -29,20 +30,19 @@ export default function Checkout() {
 
         try {
             await submitOrder();
-            
+
             alert('¡Compra exitosa! Tu pedido ha sido procesado.');
-            navigate('/perfil'); 
-        } catch (error) {
-            setErrorMsg(error.message);
+            navigate('/perfil');
+        } catch (err) {
+            setError(getErrorMessage(err));
         }
     };
 
     return (
         <Container className="my-5">
             <h2 className="mb-4">Resumen de Pedido</h2>
-            
-            {/* Mostramos errores de backend aquí (ej: Stock insuficiente) */}
-            {errorMsg && <Alert variant="danger">{errorMsg}</Alert>}
+
+            {error && <Alert variant="danger">{error}</Alert>}
 
             <Row>
                 <Col md={8}>
@@ -78,14 +78,14 @@ export default function Checkout() {
                             <h3 className="text-center text-primary">
                                 ${total.toLocaleString()}
                             </h3>
-                            
-                            <Button 
-                                className="w-100 mt-3 btn-primary-custom" 
+
+                            <Button
+                                className="w-100 mt-3 btn-primary-custom"
                                 size="lg"
                                 onClick={handleConfirmPurchase}
-                                disabled={cargando} 
+                                disabled={loading}
                             >
-                                {cargando ? 'Procesando...' : 'Confirmar Pago'}
+                                {loading ? 'Procesando...' : 'Confirmar Pago'}
                             </Button>
                         </Card.Body>
                     </Card>

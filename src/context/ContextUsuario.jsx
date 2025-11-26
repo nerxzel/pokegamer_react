@@ -5,14 +5,14 @@ import api from '../api/axiosConfig';
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-const [user, setUser] = useLocalStorage('currentUser', null);
+  const [user, setUser] = useLocalStorage('currentUser', null);
 
-const isLoggedIn = !!user;
+  const isLoggedIn = !!user;
 
-const login = async (email, password) => {
+  const login = async (email, password) => {
     try {
       const response = await api.post('/auth/login', { email, password });
-      const { user: userData, token } = response.data;      
+      const { user: userData, token } = response.data;
       setUser({ ...userData, token });
 
       return { success: true, user: userData };
@@ -25,11 +25,12 @@ const login = async (email, password) => {
 
   const register = async (name, email, password) => {
 
+
     try {
-      const response = await  api.post('/auth/register', { name, email, password })
+      const response = await api.post('/auth/register', { name, email, password })
       const { user: userData, token } = response.data;
       setUser({ ...userData, token });
-        return { success: true, user: userData };
+      return { success: true, user: userData };
     } catch (error) {
       const msg = error.response?.data?.message || "Error en el registro";
       throw new Error(msg);
@@ -37,7 +38,7 @@ const login = async (email, password) => {
   };
 
   const logout = () => {
-    setUser(null); 
+    setUser(null);
   };
 
   const updateUser = (data) => {
@@ -51,9 +52,9 @@ const login = async (email, password) => {
     register,
     logout,
     updateUser,
-  }), [user, isLoggedIn]); 
+  }), [user, isLoggedIn]);
 
-return (
+  return (
     <UserContext.Provider value={value}>
       {children}
     </UserContext.Provider>
