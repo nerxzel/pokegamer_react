@@ -11,7 +11,7 @@ function AdminAdd() {
         try {
             setSubmitting(true);
             await api.post('/products', formData);
-            navigate('/admin/productos');
+            navigate('/admin');
         } catch (error) {
             alert("Error al crear producto: " + (error.response?.data?.message || error.message));
         } finally {
