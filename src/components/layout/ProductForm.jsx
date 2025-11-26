@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { FaTrash, FaSave, FaTimes, FaUpload } from 'react-icons/fa';
 import api from '../../api/axiosConfig';
 
-const CATEGORIAS = ["Consolas", "Videojuegos", "Accesorios", "Coleccionables", "Ropa"];
-
 function ProductForm({ initialData, onSubmit, isEditing, onDelete, isSubmitting = false }) {
     const navigate = useNavigate();
 

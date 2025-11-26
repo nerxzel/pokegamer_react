@@ -29,7 +29,7 @@ function AdminEdit() {
         try {
             setSubmitting(true);
             await api.put(`/products/${id}`, formData);
-            navigate('/admin/productos');
+            navigate('/admin');
         } catch (error) {
             alert("Error al actualizar: " + error.message);
         } finally {
