@@ -1,14 +1,15 @@
-import Lapras from '../assets/lapras_construccion.png'
+import ProductGrid from "../components/layout/ProductGrid";
 
 function Admin() {
+
   return (
-    <div className='d-flex flex-column align-items-center'> 
-      <h2>En construcción</h2>
-      <img src={Lapras} 
-            alt="Lapras" 
-            width="500" 
-            height="600" />
+    <div>
+      <h1>Panel Admin</h1>
+      <ProductGrid />
     </div>
   );
 }
+
+
 export default Admin;
+

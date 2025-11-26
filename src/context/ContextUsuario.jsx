@@ -25,6 +25,7 @@ export const UserProvider = ({ children }) => {
 
   const register = async (name, email, password) => {
 
+
     try {
       const response = await api.post('/auth/register', { name, email, password })
       const { user: userData, token } = response.data;

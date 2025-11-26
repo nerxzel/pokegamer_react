@@ -6,19 +6,21 @@ import Comunidad from '../pages/Comunidad.jsx';
 import Carrito from '../pages/Carrito.jsx';
 import Usuario from '../pages/Usuario.jsx';
 import Nosotros from '../pages/Nosotros.jsx';
-import Perfil from '../pages/Perfil.jsx'; 
+import Perfil from '../pages/Perfil.jsx';
 import Checkout from '../pages/Checkout.jsx'
 import App from '../App.jsx'
 import RutaProtegida from './RutaProtegida.jsx'
 import AdminPanel from '../pages/Admin.jsx'
+import AdminAdd from '../pages/AdminAdd.jsx'
+import AdminEdit from '../pages/AdminEdit.jsx'
 
 export default function AppRoutes() {
     return (
         <Routes>
-        
-            <Route path="/" element={<App />}>            
+
+            <Route path="/" element={<App />}>
                 <Route index element={<Inicio />} />
-                <Route path="productos" element={<Productos/>} />
+                <Route path="productos" element={<Productos />} />
                 <Route path="noticias" element={<Noticias />} />
                 <Route path="comunidad" element={<Comunidad />} />
                 <Route path="carrito" element={<Carrito />} />
@@ -26,12 +28,14 @@ export default function AppRoutes() {
                 <Route path="perfil" element={<Perfil />} />
                 <Route path="checkout" element={<Checkout />} />
                 <Route path="usuario" element={<Usuario />} />
-                
-            <Route element={<RutaProtegida allowedRole="admin" />}>
-                <Route path="admin" element={<AdminPanel />} />
-            </Route>                 
+
+                <Route element={<RutaProtegida allowedRole="admin" />}>
+                    <Route path="admin" element={<AdminPanel />} />
+                    <Route path="admin/products" element={<AdminAdd />} />
+                    <Route path="admin/products/:id" element={<AdminEdit />} />
+                </Route>
             </Route>
-        
+
         </Routes>
     );
 }
