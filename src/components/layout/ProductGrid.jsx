@@ -65,7 +65,7 @@ function ProductGrid() {
                 </Col>
                 <Col md={4} className="text-end">
                     <Button
-                        variant="success"
+                        className="Producto-Comprar-Boton"
                         onClick={() => navigate(`/admin/products`)}
                     >
                         <FaPlus className="me-2" /> Nuevo Producto
@@ -108,7 +108,7 @@ function ProductGrid() {
                                         </td>
                                         <td className="fw-bold">{product.name}</td>
                                         <td className="fw-normal">
-                                            {product.category}
+                                            {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
                                         </td>
                                         <td className="fw-bold text-nowrap">{formatCurrency(product.price)}</td>
                                         <td>

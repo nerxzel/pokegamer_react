@@ -116,7 +116,7 @@ function ProductForm({ initialData, onSubmit, isEditing, onDelete, isSubmitting 
 
                         {!loadingCategories && categories.map((cat) => (
                             <option key={cat} value={cat}>
-                                {cat}
+                                {cat.charAt(0).toUpperCase() + cat.slice(1)}
                             </option>
                         ))}
                     </Form.Select>
@@ -209,7 +209,7 @@ function ProductForm({ initialData, onSubmit, isEditing, onDelete, isSubmitting 
                 </Button>
 
                 <Button
-                    variant="primary"
+                    className="Producto-Comprar-Boton"
                     type="submit"
                     disabled={isSubmitting}
                 >
