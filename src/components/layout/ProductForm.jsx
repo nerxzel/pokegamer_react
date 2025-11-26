@@ -2,11 +2,15 @@ import { useState, useEffect } from "react";
 import { Form, Button, Row, Col, Spinner, Image, InputGroup } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 import { FaTrash, FaSave, FaTimes, FaUpload } from 'react-icons/fa';
+import api from '../../api/axiosConfig';
 
 const CATEGORIAS = ["Consolas", "Videojuegos", "Accesorios", "Coleccionables", "Ropa"];
 
 function ProductForm({ initialData, onSubmit, isEditing, onDelete, isSubmitting = false }) {
     const navigate = useNavigate();
+
+    const [categories, setCategories] = useState([]);
+    const [loadingCategories, setLoadingCategories] = useState(true);
 
     const [formData, setFormData] = useState({
         name: '',
@@ -28,6 +32,23 @@ function ProductForm({ initialData, onSubmit, isEditing, onDelete, isSubmitting 
             }
         }
     }, [initialData, isEditing]);
+
+    useEffect(() => {
+        const fetchCategorias = async () => {
+            try {
+                const response = await api.get('/products/categories');
+
+                if (response.data && Array.isArray(response.data)) {
+                    setCategories(response.data);
+                }
+            } catch (error) {
+                console.error("Error cargando categorías:", error);
+            } finally {
+                setLoadingCategories(false);
+            }
+        };
+        fetchCategorias();
+    }, []);
 
     const handleInputChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -76,7 +97,7 @@ function ProductForm({ initialData, onSubmit, isEditing, onDelete, isSubmitting 
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
-                        placeholder="Ej: Nintendo Switch OLED"
+                        placeholder="Ej: Hollow Knight: Solksong"
                         required
                         disabled={isSubmitting}
                     />
@@ -89,11 +110,16 @@ function ProductForm({ initialData, onSubmit, isEditing, onDelete, isSubmitting 
                         value={formData.category}
                         onChange={handleInputChange}
                         required
-                        disabled={isSubmitting}
+                        disabled={isSubmitting || loadingCategories}
                     >
-                        <option value="">Seleccionar...</option>
-                        {CATEGORIAS.map(cat => (
-                            <option key={cat} value={cat}>{cat}</option>
+                        <option value="">
+                            {loadingCategories ? 'Cargando...' : 'Seleccionar...'}
+                        </option>
+
+                        {!loadingCategories && categories.map((cat) => (
+                            <option key={cat} value={cat}>
+                                {cat}
+                            </option>
                         ))}
                     </Form.Select>
                 </Form.Group>
