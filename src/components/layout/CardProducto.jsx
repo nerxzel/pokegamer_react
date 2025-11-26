@@ -3,10 +3,10 @@ import { useCart } from '../../hooks/useCart';
 import { useState } from 'react';
 
 
-export default function CardProducto( {product} ) {
+export default function CardProducto({ product }) {
 
     const { addToCart } = useCart();
-    const [ showToast, setShowToast ] = useState(false)
+    const [showToast, setShowToast] = useState(false)
 
     const formatPrice = (price) => {
         return new Intl.NumberFormat('es-CL', {
@@ -14,7 +14,7 @@ export default function CardProducto( {product} ) {
             currency: 'CLP'
         }).format(price);
     };
-    
+
     const handleAddToCart = () => {
         addToCart(product);
         setShowToast(true)
@@ -24,16 +24,16 @@ export default function CardProducto( {product} ) {
     return (
         <>
             <Card className='Producto-Box'>
-                
-                <Card.Img variant="top" src={product.imagen}/>
+
+                <Card.Img variant="top" src={product.imagen || 'https://placehold.co/100x100?text=No+Img'} />
                 <Card.Body className="d-flex flex-column">
                     <Card.Title className='text-center'>{product.name}</Card.Title>
                     <div className="mt-auto d-flex justify-content-between align-items-center">
                         <Card.Text className='Producto-Precio mb-0'>
                             {formatPrice(product.price)}
                         </Card.Text>
-                        <Button 
-                            className='Producto-Comprar-Boton' 
+                        <Button
+                            className='Producto-Comprar-Boton'
                             onClick={handleAddToCart}
                             variant="primary"
                         >
@@ -44,16 +44,16 @@ export default function CardProducto( {product} ) {
             </Card>
 
             <ToastContainer className="p-3 position-fixed bottom-0 end-0">
-                <Toast 
-                    onClose={() => setShowToast(false)} 
-                    show={showToast} 
-                    delay={3000} 
+                <Toast
+                    onClose={() => setShowToast(false)}
+                    show={showToast}
+                    delay={3000}
                     autohide
-                    className="custom-toast-bg" 
+                    className="custom-toast-bg"
                 >
                     <Toast.Header className="custom-toast-header">
                         <strong className="me-auto">🛒 Carrito</strong>
-                        <small className="text-white">Justo ahora</small> 
+                        <small className="text-white">Justo ahora</small>
                     </Toast.Header>
                     <Toast.Body>
                         ¡{product.name} añadido correctamente!
