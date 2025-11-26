@@ -17,7 +17,7 @@ function AdminEdit() {
                 setProduct(res.data || res);
             } catch (err) {
                 alert("No se pudo cargar el producto");
-                navigate('/admin/productos');
+                navigate('/admin');
             } finally {
                 setLoading(false);
             }
