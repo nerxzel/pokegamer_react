@@ -20,7 +20,7 @@ function ProductGrid() {
             setLoading(true);
             setError(null);
 
-            const response = await api.get('/products');
+            const response = await api.get('/products?isActive=true');
 
             if (response.data && response.data && Array.isArray(response.data.products)) {
                 setProducts(response.data.products);
@@ -40,18 +40,6 @@ function ProductGrid() {
         loadProducts();
     }, []);
 
-    const toggleProductStatus = async (id, currentStatus, name) => {
-        const action = currentStatus ? 'desactivar' : 'activar';
-        if (!window.confirm(`¿Estás seguro de que quieres ${action} el producto "${name}"?`)) return;
-
-        try {
-            await api.put(`/products/${id}`, { isActive: !currentStatus });
-            loadProducts();
-        } catch (err) {
-            alert(`Error al ${action} el producto`);
-            console.error(err);
-        }
-    };
 
     const filteredProducts = products.filter((product) => {
         const term = searchBar.toLowerCase();
@@ -97,7 +85,7 @@ function ProductGrid() {
                     <Table hover className="align-middle table-striped">
                         <thead className="table-light">
                             <tr>
-                                <th style={{ width: '80px' }}>Img</th>
+                                <th>Imagen</th>
                                 <th>Nombre</th>
                                 <th>Categoría</th>
                                 <th>Precio</th>
@@ -139,14 +127,7 @@ function ProductGrid() {
                                             >
                                                 <FaPencilAlt />
                                             </Button>
-                                            <Button
-                                                variant={product.isActive ? "outline-danger" : "outline-success"}
-                                                size="sm"
-                                                onClick={() => toggleProductStatus(product._id, product.isActive, product.name)}
-                                                title={product.isActive ? "Desactivar" : "Activar"}
-                                            >
-                                                {product.isActive ? <FaBan /> : <FaCheck />}
-                                            </Button>
+
                                         </td>
                                     </tr>
                                 ))

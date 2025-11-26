@@ -28,7 +28,7 @@ export default function Productos() {
 
 
                 const [resProductos, resCategorias] = await Promise.all([
-                    api.get('/products'),
+                    api.get('/products?isActive=true'),
                     api.get('/products/categories')
                 ]);
 

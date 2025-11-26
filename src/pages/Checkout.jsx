@@ -42,7 +42,6 @@ export default function Checkout() {
         <Container className="my-5">
             <h2 className="mb-4">Resumen de Pedido</h2>
 
-            {/* Mostramos errores de backend aquí (ej: Stock insuficiente) */}
             {error && <Alert variant="danger">{error}</Alert>}
 
             <Row>
